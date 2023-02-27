@@ -1,0 +1,6 @@
+// common
+export const SET_OVERLAY = 'SET_OVERLAY';
+export const MANAGE_TOAST = 'MANAGE_TOAST';
+export const SET_LOGGED_IN_USER = 'SET_LOGGED_IN_USER';
+export const MANAGE_DIALOG = 'MANAGE_DIALOG';
+export const SET_COMPONENT_OVERLAY = 'SET_COMPONENT_OVERLAY';
