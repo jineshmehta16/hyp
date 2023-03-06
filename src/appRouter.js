@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import Toast from './js/common/toast';
 import { connect } from 'react-redux';
@@ -29,6 +29,7 @@ const AppRouter = (props) => {
         </>
       ),
     },
+
     {
       path: 'login',
       element: <Login />,
@@ -41,9 +42,9 @@ const AppRouter = (props) => {
 
   return (
     <>
-      <React.Suspense fallback={<SplashScreen />}>
+      <Suspense fallback={<SplashScreen />}>
         <RouterProvider router={router} />
-      </React.Suspense>
+      </Suspense>
     </>
   );
 };
