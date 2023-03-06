@@ -4,15 +4,15 @@ const styles = (theme) => {
     footerWrapper: {
       background: secondaryColor?.footerBgColor,
       color: secondaryColor?.contrastText,
+      padding: '16px',
+      textAlign: 'center',
+      position: 'absolute',
+      bottom: '0',
+      left: '0',
+      right: '0',
     },
-
-    footerLinks: {
-      color: secondaryColor?.contrastText,
-      textDecoration: 'none',
-    },
-    dividerLine: {
-      margin: '1rem 100px',
-      borderTop: '1px solid #E9E9E9;',
+    footerText: {
+      fontWeight: '600 !important',
     },
   };
 };
