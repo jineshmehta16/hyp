@@ -38,7 +38,7 @@ const Login = (props) => {
       container
       spacing={2}
       direction='column'
-      className={classes.root}
+      className={classes?.root}
       minHeight='100vh'
     >
       <Paper elevation={3}>
@@ -52,7 +52,7 @@ const Login = (props) => {
                   type='email'
                   sx={{ m: 1, width: '35ch' }}
                   required
-                  defaultValue={loggedinUserInfo.email}
+                  defaultValue={loggedinUserInfo?.email}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -76,7 +76,7 @@ const Login = (props) => {
                   type='password'
                   sx={{ m: 1, width: '35ch' }}
                   required
-                  defaultValue={loggedinUserInfo.password}
+                  defaultValue={loggedinUserInfo?.password}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -94,13 +94,13 @@ const Login = (props) => {
               </Grid>
 
               <Grid item justifyContent='flex-start'>
-                <a href='test' className={classes.forgotPassword}>
+                <a href='test' className={classes?.forgotPassword}>
                   Forgot password?
                 </a>
               </Grid>
             </CardContent>
 
-            <CardActions className={classes.root}>
+            <CardActions className={classes?.root}>
               <Grid item>
                 <Button variant='contained' size='large' type='submit'>
                   Login

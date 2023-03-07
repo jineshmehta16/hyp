@@ -10,7 +10,7 @@ const Footer = (props) => {
       <Typography
         component='div'
         variant='body1'
-        className={classes.footerText}
+        className={classes?.footerText}
       >
         HyP- Host your parking &copy;2023 Techprom IoT Solutions Pvt Ltd
       </Typography>

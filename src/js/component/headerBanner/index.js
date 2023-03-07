@@ -49,7 +49,7 @@ const HeaderBanner = (props) => {
             <Typography
               component='div'
               variant='h6'
-              className={classes.bannerText}
+              className={classes?.bannerText}
             >
               HyP Parking Management Dashboard
             </Typography>
@@ -60,7 +60,7 @@ const HeaderBanner = (props) => {
           <Typography
             component='div'
             variant='h6'
-            className={classes.dateTimeText}
+            className={classes?.dateTimeText}
             justifyContent='flex-end'
             alignItems='center'
           >
