@@ -12,11 +12,15 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { manageToast } from '../../store/common/actions';
 
 const Login = (props) => {
   const { classes } = props;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const initialState = {
     emailId: '',
@@ -28,9 +32,94 @@ const Login = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    // add end point integration here
+    // TODO - change the url
+    axios
+      .post('http://localhost:4000/login', loggedinUserInfo)
+      .then(function (res) {
+        if (res?.data?.jwt) {
+          sessionStorage.setItem('token', res?.data?.jwt);
 
-    navigate('/');
+          sessionStorage.setItem('emailId', loggedinUserInfo.emailId);
+          navigate('/');
+        } else {
+          const obj = {
+            title: 'error',
+            message: 'Something went wrong please try again later.',
+            status: true,
+            type: 'error',
+          };
+          dispatch(manageToast(obj));
+        }
+      })
+      .catch((error) => {
+        let obj;
+        if (error.code === 'ERR_BAD_REQUEST') {
+          obj = {
+            title: 'error',
+            message: 'Invalid Credentials',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/invalid-email') {
+          obj = {
+            title: 'error',
+            message: 'Invalid Email Id.',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/expired-action-code') {
+          obj = {
+            title: 'error',
+            message: 'Action code is expired.',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/invalid-action-code') {
+          obj = {
+            title: 'error',
+            message: 'Action code is invalid',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/user-disabled') {
+          obj = {
+            title: 'error',
+            message: 'Access to this user is disable',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/user-not-found') {
+          obj = {
+            title: 'error',
+            message:
+              'Your information is not present in Database. Request you to first Sign Up.',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/wrong-password') {
+          obj = {
+            title: 'error',
+            message: 'Wrong Password',
+            status: true,
+            type: 'error',
+          };
+        } else if (error.code === 'auth/user-not-found') {
+          obj = {
+            title: 'error',
+            message: 'User does not existing in our data base',
+            status: true,
+            type: 'error',
+          };
+        } else {
+          obj = {
+            title: 'error',
+            message: 'Something Went wrong.',
+            status: true,
+            type: 'error',
+          };
+        }
+        dispatch(manageToast(obj));
+      });
   };
 
   return (
@@ -52,7 +141,7 @@ const Login = (props) => {
                   type='email'
                   sx={{ m: 1, width: '35ch' }}
                   required
-                  defaultValue={loggedinUserInfo?.email}
+                  defaultValue={loggedinUserInfo?.emailId}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>

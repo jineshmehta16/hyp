@@ -32,7 +32,14 @@ const AppRouter = (props) => {
 
     {
       path: 'login',
-      element: <Login />,
+      element: (
+        <>
+          {toast?.status && <Toast />}
+          {<GlobalStyles />}
+          {overlay && <LoadingOverlay />}
+          <Login />
+        </>
+      ),
     },
     {
       path: 'about',
