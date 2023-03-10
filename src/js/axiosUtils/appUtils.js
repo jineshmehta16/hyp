@@ -67,12 +67,12 @@ export const getNodeApi = (path, data) => {
 export const get = (path) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${baseUrl}${path}`, getHeaders())
+      .get(`${path}`)
       .then((response) => {
         if (response?.data?.errors?.length > 0) {
           reject(handleGraphQlError(response?.data?.errors[0]));
         } else {
-          resolve(response?.data?.data);
+          resolve(response);
         }
       })
       .catch((error) => {

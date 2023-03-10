@@ -24,7 +24,7 @@ const AppRouter = (props) => {
           {<GlobalStyles />}
           {overlay && <LoadingOverlay />}
           {true && <Header />}
-          Hello.....
+          <Home />
           {true && <Footer />}
         </>
       ),

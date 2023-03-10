@@ -1,6 +1,7 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import styles from './styles';
+import { withStyles } from '@mui/styles';
 
 const LoadingOverlay = (props) => {
   const { classes } = props;
@@ -9,9 +10,9 @@ const LoadingOverlay = (props) => {
   return (
     <div className={overlay}>
       <div className={center}>
-        <CircularProgress color="secondary" />
+        <CircularProgress color='secondary' />
       </div>
     </div>
   );
 };
-export default LoadingOverlay
+export default withStyles(styles)(LoadingOverlay);
