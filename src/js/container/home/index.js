@@ -25,8 +25,10 @@ const Home = () => {
 
   return (
     <>
-      <OccupancyLayout />
-      {parkingDetails?.occupied}
+      <OccupancyLayout
+        occupied={parkingDetails?.occupied}
+        vacant={parkingDetails?.vacant}
+      />
     </>
   );
 };

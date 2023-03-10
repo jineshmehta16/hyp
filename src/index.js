@@ -45,6 +45,8 @@ let theme = createTheme({
   },
   status: {
     danger: 'red',
+    occupied: '#B30000',
+    vacant: '#72cc50',
   },
 });
 theme = responsiveFontSizes(theme);
@@ -58,10 +60,10 @@ const store = createStore(
 
 root.render(
   <React.StrictMode>
-     <Provider store={store}>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <AppRouter />
       </ThemeProvider>
-  </Provider>
+    </Provider>
   </React.StrictMode>
 );
