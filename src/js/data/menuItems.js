@@ -5,6 +5,12 @@ import twitter from '../../assets/images/social/twitter.png';
 
 export const headerMenu = [
   {
+    state: '/login',
+    name: 'Login',
+    type: 'main',
+    icon: '',
+  },
+  {
     state: '/view-bike',
     name: 'Buy Bike',
     type: 'main',

@@ -11,6 +11,7 @@ import SearchIcon from '@mui/material/Icon';
 import MenuItemHeader from './menuItem';
 import AppLogo from './appLogo';
 import Box from '@mui/material/Box';
+import HeaderBanner from '../headerBanner';
 
 const ScrollTop = (props) => {
   const { children, window, classes } = props;
@@ -34,7 +35,7 @@ const ScrollTop = (props) => {
   };
   return (
     <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes?.root}>
+      <div onClick={handleClick} role='presentation' className={classes?.root}>
         {children}
       </div>
     </Zoom>
@@ -50,7 +51,7 @@ const initialState = {
 const Header = (props) => {
   const { classes } = props;
   const [componentstate, setComponentstate] = useState(initialState);
- 
+
   const open = Boolean(componentstate.anchorEl);
 
   const handleClick = (event) => {
@@ -92,54 +93,55 @@ const Header = (props) => {
     <>
       {isMobile ? (
         <>
-          <AppBar position="static" className={classes?.mobileAppbar}>
+          <AppBar position='static' className={classes?.mobileAppbar}>
             <Toolbar>
               <Box flexGrow={1}>
                 <AppLogo />
               </Box>
               <Box>
-                <SearchIcon fontSize="large" />
+                <SearchIcon fontSize='large' />
               </Box>
             </Toolbar>
           </AppBar>
         </>
       ) : (
-        <AppBar
-          position="static"
-          color="default"
-          id="back-to-top-anchor"
-          className={`${'px-4 font-size-20px'} ${
-            classes?.headerWhiteBackground
-          }`}
-        >
-          <Toolbar className="d-flex justify-content-center aligm-items-center">
-            <AppLogo />
+        <>
+          <AppBar
+            position='static'
+            color='default'
+            id='back-to-top-anchor'
+            className={`${'px-4 font-size-20px'} ${
+              classes?.headerWhiteBackground
+            }`}
+          >
+            <Toolbar className='d-flex justify-content-center aligm-items-center'>
+              <AppLogo />
 
-            <Box
-              display="flex"
-              mr={6}
-              className={`${'app-input'} ${classes?.headerInputWrapper}`}
-            >
+              {/* <Box
+                display='flex'
+                mr={6}
+                className={`${'app-input'} ${classes?.headerInputWrapper}`}
+              ></Box> */}
 
-            </Box>
-
-            <MenuItemHeader
-              open={open}
-              handleClick={handleClick}
-              anchorEl={componentstate.anchorEl}
-              handleClose={handleClose}
-            />
-          </Toolbar>
-        </AppBar>
+              {/* <MenuItemHeader
+                open={open}
+                handleClick={handleClick}
+                anchorEl={componentstate.anchorEl}
+                handleClose={handleClose}
+              /> */}
+            </Toolbar>
+          </AppBar>
+          <HeaderBanner />
+        </>
       )}
 
       {!isMobile && (
         <ScrollTop {...props}>
           <Fab
-            color="primary"
+            color='primary'
             className={classes?.scrollToTopBtn}
-            size="small"
-            aria-label="scroll back to top"
+            size='small'
+            aria-label='scroll back to top'
           >
             <KeyboardArrowUpIcon />
           </Fab>
@@ -148,4 +150,4 @@ const Header = (props) => {
     </>
   );
 };
-export default Header
+export default Header;
