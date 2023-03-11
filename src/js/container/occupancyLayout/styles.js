@@ -11,7 +11,7 @@ const styles = (theme) => {
     },
     barHeight: {
       '& .MuiLinearProgress-root': {
-        height: '1.5rem',
+        height: '1rem',
       },
     },
   };

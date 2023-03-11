@@ -9,12 +9,12 @@ import styles from './styles';
 const OccupancyLayout = (props) => {
   const { classes } = props;
   return (
-    <Box sx={{ flexGrow: 1 }} m={3}>
-      <Grid container spacing={2}>
+    <Box sx={{ flexGrow: 1 }} m={0}>
+      <Grid container spacing={3}>
         <Grid item md={8} xs={12}>
           <Box
             sx={{
-              height: 180,
+              height: 160,
               border: '3px solid',
               borderColor: (theme) => theme?.status?.success,
             }}
@@ -86,19 +86,19 @@ const OccupancyLayout = (props) => {
         <Grid item md={4} xs={12}>
           <Box
             sx={{
-              height: 180,
+              height: 160,
               border: '3px solid',
               borderColor: (theme) => theme?.status?.success,
               textAlign: 'center',
               justifyContent: 'center',
             }}
           >
-            <Typography variant='h5' align='left' ml={2}>
+            <Typography variant='h6' align='left' ml={2}>
               {' '}
               Parking Occupancy (Level-wise)
             </Typography>
 
-            <Grid container m={1} spacing={1} pt={2} align='left'>
+            <Grid container m={1} spacing={1} pt={1} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
                 <React.Fragment key={levelParkingData?.level}>
                   <Grid item xs={2}>

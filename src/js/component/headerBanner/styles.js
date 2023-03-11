@@ -4,7 +4,7 @@ const styles = (theme) => {
     headerBannerWrapper: {
       background: secondaryColor?.footerBgColor,
       color: secondaryColor?.contrastText,
-      padding: '16px',
+      padding: '0',
       textAlign: 'center',
       bottom: '0',
       left: '0',

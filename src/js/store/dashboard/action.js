@@ -1,7 +1,6 @@
 import { SET_OVERALL_PARKING_DETAILS } from '../../actions/actionTypes';
 import { get } from '../../axiosUtils/appUtils';
 import { manageToast, setOverlayStatus } from '../common/actions';
-//import axios from 'axios';
 
 export const setOverallParkingDetails = (data) => {
   return {
