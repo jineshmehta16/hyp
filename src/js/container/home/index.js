@@ -28,6 +28,7 @@ const Home = () => {
       <OccupancyLayout
         occupied={parkingDetails?.occupied}
         vacant={parkingDetails?.vacant}
+        parkingLevelOccupancy={parkingDetails?.parkingLevelOccupancy}
       />
     </>
   );

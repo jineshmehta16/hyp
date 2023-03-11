@@ -47,6 +47,7 @@ let theme = createTheme({
     danger: 'red',
     occupied: '#B30000',
     vacant: '#72cc50',
+    success: 'green',
   },
 });
 theme = responsiveFontSizes(theme);

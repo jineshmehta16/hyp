@@ -11,11 +11,12 @@ const OccupancyLayout = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }} m={3}>
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid item md={8} xs={12}>
           <Box
             sx={{
               height: 180,
-              border: '5px solid green',
+              border: '3px solid',
+              borderColor: (theme) => theme?.status?.success,
             }}
           >
             <Typography variant='h5' m={3}>
@@ -24,7 +25,11 @@ const OccupancyLayout = (props) => {
             </Typography>
 
             <Grid container spacing={6} m={2}>
-              <Grid item xs={6} className={classes?.root}>
+              <Grid
+                item
+                xs={6}
+                className={[classes?.barHeight, classes.root].join(' ')}
+              >
                 <LinearProgress variant='determinate' value={props?.occupied} />
 
                 <Box
@@ -37,7 +42,7 @@ const OccupancyLayout = (props) => {
                     component='span'
                     sx={{
                       alignItems: 'flex-start',
-                      color: '#B30000',
+                      color: (theme) => theme?.status?.occupied,
                     }}
                   >
                     <Typography variant='body1' fontWeight={600}>
@@ -49,7 +54,7 @@ const OccupancyLayout = (props) => {
                     component='span'
                     sx={{
                       marginLeft: 'auto',
-                      color: ' #72cc50',
+                      color: (theme) => theme?.status?.vacant,
                     }}
                   >
                     <Typography variant='body1' fontWeight={600}>
@@ -78,15 +83,69 @@ const OccupancyLayout = (props) => {
             </Grid>
           </Box>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item md={4} xs={12}>
           <Box
             sx={{
               height: 180,
-              border: '5px solid green',
+              border: '3px solid',
+              borderColor: (theme) => theme?.status?.success,
               textAlign: 'center',
               justifyContent: 'center',
             }}
-          />
+          >
+            <Typography variant='h5' align='left' ml={2}>
+              {' '}
+              Parking Occupancy (Level-wise)
+            </Typography>
+
+            <Grid container m={1} spacing={1} pt={2} align='left'>
+              {props?.parkingLevelOccupancy?.map((levelParkingData) => (
+                <React.Fragment key={levelParkingData?.level}>
+                  <Grid item xs={2}>
+                    <Typography variant='body1'>
+                      {levelParkingData?.level}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={9} className={classes?.root} align='left'>
+                    <LinearProgress
+                      variant='determinate'
+                      value={levelParkingData?.occupied}
+                    />
+                    <Box
+                      m={3}
+                      sx={{
+                        display: 'flex',
+                      }}
+                    >
+                      <Box
+                        component='span'
+                        sx={{
+                          alignItems: 'flex-start',
+                          color: '#B30000',
+                        }}
+                      >
+                        <Typography variant='body1'>
+                          {' '}
+                          {levelParkingData?.occupied}% Occupied{' '}
+                        </Typography>
+                      </Box>
+                      <Box
+                        component='span'
+                        sx={{
+                          marginLeft: 'auto',
+                          color: ' #72cc50',
+                        }}
+                      >
+                        <Typography variant='body1'>
+                          {levelParkingData?.vacant}% Vacant{' '}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Grid>
+                </React.Fragment>
+              ))}
+            </Grid>
+          </Box>
         </Grid>
       </Grid>
     </Box>

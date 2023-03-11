@@ -8,6 +8,8 @@ const styles = (theme) => {
       '& .MuiLinearProgress-barColorPrimary': {
         backgroundColor: status.occupied,
       },
+    },
+    barHeight: {
       '& .MuiLinearProgress-root': {
         height: '1.5rem',
       },

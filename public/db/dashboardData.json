@@ -16,18 +16,6 @@
                 "occupied": 15,
                 "vacant": 10,
                 "currentUtilizationInPercentage": 60
-            },
-            {
-                "level": "F3",
-                "occupied": 20,
-                "vacant": 5,
-                "currentUtilizationInPercentage": 80
-            },
-            {
-                "level": "F4",
-                "occupied": 20,
-                "vacant": 5,
-                "currentUtilizationInPercentage": 80
             }
         ]
     },
