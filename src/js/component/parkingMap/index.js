@@ -48,7 +48,7 @@ const ParkingMap = (props) => {
       }}
     >
       <img
-        src={parkingMap}
+        src={state?.imagePath}
         alt='test'
         style={{
           position: 'relative',
