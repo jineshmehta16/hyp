@@ -3,66 +3,91 @@
         "parkingNumber": 0,
         "xCord": 15.592203898050974,
         "yCord": 18.795430944963655,
+        "position": "H",
         "occupied": false
     },
     {
         "parkingNumber": 2,
         "xCord": 15.592203898050974,
         "yCord": 22.63759086188993,
+        "position": "H",
         "occupied": true
     },
     {
         "parkingNumber": 3,
         "xCord": 15.592203898050974,
         "yCord": 25.85669781931464,
+        "position": "H",
         "occupied": true
     },
     {
         "parkingNumber": 4,
         "xCord": 15.592203898050974,
         "yCord": 29.179646936656283,
+        "position": "H",
         "occupied": true
     },
     {
         "parkingNumber": 5,
         "xCord": 15.667166416791604,
+        "position": "H",
         "yCord": 33.229491173416406,
         "occupied": true
     },
     {
         "parkingNumber": 6,
         "xCord": 15.667166416791604,
+        "position": "H",
         "yCord": 36.3447559709242,
         "occupied": true
     },
     {
         "parkingNumber": 7,
         "xCord": 15.817091454272864,
+        "position": "H",
         "yCord": 39.77154724818276,
         "occupied": true
     },
     {
         "parkingNumber": 8,
         "xCord": 16.34182908545727,
+        "position": "H",
         "yCord": 43.613707165109034,
         "occupied": true
     },
     {
         "parkingNumber": 9,
         "xCord": 27.061469265367315,
+        "position": "H",
         "yCord": 18.69158878504673,
         "occupied": true
     },
     {
         "parkingNumber": 10,
+        "position": "H",
         "xCord": 27.211394302848575,
         "yCord": 23.156801661474557,
         "occupied": true
     },
     {
         "parkingNumber": 11,
+        "position": "H",
         "xCord": 27.136431784107945,
         "yCord": 26.375908618899274,
+        "occupied": true
+    },
+    {
+        "parkingNumber": 11,
+        "position": "V",
+        "xCord": 56.60263522884882,
+        "yCord": 45.68345323741007,
+        "occupied": true
+    },
+    {
+        "parkingNumber": 11,
+        "position": "V",
+        "xCord": 59.15395284327323,
+        "yCord": 45.86330935251798,
         "occupied": true
     }
 ]

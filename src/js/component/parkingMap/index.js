@@ -15,7 +15,8 @@ const ParkingMap = (props) => {
     document.getElementById('map').onclick = function (e) {
       let percentX = e?.clientX / this.offsetWidth;
       let percentY = e?.clientY / this.offsetHeight;
-
+      console.log(percentX* 100)
+      console.log(percentY* 100)
       setDataset((pre) => [
         ...pre,
         {
@@ -62,16 +63,17 @@ const ParkingMap = (props) => {
           <div
             key={each?.parkingNumber}
             style={{
-              width: '15px',
-              height: '15px',
-              borderRadius: '50%',
-              background: 'red',
+              width: each?.position === 'H' ? '45px' : '13px',
+              height: each?.position === 'H' ? '9px': '33px',
+              borderRadius: '8px',
+              background: 'green',
               position: 'absolute',
               top: `${each?.yCord}%`,
               left: `${each?.xCord}%`,
-              zIndex: 4,
               color: 'white',
-              fontSize: '8px',
+              fontSize: '9px',
+              fontWeight:'bold',
+              zIndex:4,
               textAlign: 'center',
             }}
           >
