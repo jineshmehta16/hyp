@@ -9,21 +9,21 @@
     {
         "parkingNumber": 2,
         "xCord": 15.592203898050974,
-        "yCord": 22.63759086188993,
+        "yCord": 22.53759086188993,
         "position": "H",
         "occupied": true
     },
     {
         "parkingNumber": 3,
         "xCord": 15.592203898050974,
-        "yCord": 25.85669781931464,
+        "yCord": 25.55669781931464,
         "position": "H",
         "occupied": true
     },
     {
         "parkingNumber": 4,
         "xCord": 15.592203898050974,
-        "yCord": 29.179646936656283,
+        "yCord": 29.009646936656283,
         "position": "H",
         "occupied": true
     },
@@ -50,9 +50,9 @@
     },
     {
         "parkingNumber": 8,
-        "xCord": 16.34182908545727,
+        "xCord": 16.04182908545727,
         "position": "H",
-        "yCord": 43.613707165109034,
+        "yCord": 43.213707165109034,
         "occupied": true
     },
     {

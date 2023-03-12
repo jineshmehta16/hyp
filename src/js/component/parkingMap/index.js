@@ -65,7 +65,6 @@ const ParkingMap = (props) => {
             style={{
               width: each?.position === 'H' ? '45px' : '13px',
               height: each?.position === 'H' ? '9px': '33px',
-              borderRadius: '8px',
               background: 'green',
               position: 'absolute',
               top: `${each?.yCord}%`,
