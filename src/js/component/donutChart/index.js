@@ -7,7 +7,7 @@ export default function PieChart({ occupied, vacant, height }) {
       foreColor: '#000000',
     },
     colors: ['#B30000', '#72cc50'],
-    labels: ['occupied', vacant],
+    labels: ['occupied', 'vacant'],
     legend: {
       fontSize: '16px',
     },
