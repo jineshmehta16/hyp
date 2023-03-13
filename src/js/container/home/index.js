@@ -39,6 +39,9 @@ const Home = () => {
         occupied={parkingDetails?.occupied}
         vacant={parkingDetails?.vacant}
         parkingLevelOccupancy={parkingDetails?.parkingLevelOccupancy}
+        currentUtilizationInPercentage={
+          parkingDetails?.currentUtilizationInPercentage
+        }
       />
 
       <Button onClick={() => openMap('b1', parkingMap)} variant='contained'>

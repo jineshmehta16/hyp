@@ -70,7 +70,7 @@ const OccupancyLayout = (props) => {
                   sx={{ flexGrow: 1, textAlign: 'center' }}
                 >
                   {' '}
-                  {props?.occupied}%
+                  {props?.currentUtilizationInPercentage}%
                 </Typography>
                 <Typography
                   variant='h5'
