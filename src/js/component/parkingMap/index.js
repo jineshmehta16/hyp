@@ -65,7 +65,6 @@ const ParkingMap = (props) => {
         style={{
           width: '100vw',
           height: '100vh',
-          border: '1px solid red',
           position: 'relative',
           overflow: 'auto',
         }}

@@ -51,7 +51,9 @@ const OccupancyLayout = (props) => {
         <Grid item md={8} xs={12}>
           <Card
             sx={{
-              height: 400,
+              height: 'max-content',
+              paddingBottom: '18px',
+              marginBottom: '50px',
               textAlign: 'center',
               justifyContent: 'center',
             }}
