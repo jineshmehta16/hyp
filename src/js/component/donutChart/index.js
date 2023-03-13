@@ -1,12 +1,16 @@
 import React from 'react';
+import { useTheme } from '@mui/material/styles';
 import Chart from 'react-apexcharts';
 
-export default function PieChart({ occupied, vacant, height }) {
+export default function DonutChart({ occupied, vacant, height }) {
+  const theme = useTheme();
+  const occupiedColor = theme?.status?.occupied;
+  const vacantColor = theme?.status?.vacant;
   const options = {
     chart: {
       foreColor: '#000000',
     },
-    colors: ['#B30000', '#72cc50'],
+    colors: [occupiedColor, vacantColor],
     labels: ['occupied', 'vacant'],
     legend: {
       fontSize: '16px',

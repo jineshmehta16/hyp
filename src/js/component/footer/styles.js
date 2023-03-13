@@ -10,6 +10,7 @@ const styles = (theme) => {
       bottom: '0',
       left: '0',
       right: '0',
+      zIndex: 5,
     },
     footerText: {
       fontWeight: '600 !important',
