@@ -51,8 +51,8 @@ const HeaderBanner = (props) => {
         justify='space-around'
         alignItems='center'
       >
-        <Grid item md={8}>
-          <Stack direction='row' alignItems='center' gap={1}>
+        <Grid item md={8} sx={12}>
+          <Stack direction='row' alignItems='center' gap={1} m={5}>
             <Avatar sx={{ width: 30, height: 30, bgcolor: '#67637780' }}>
               <HomeIcon />
             </Avatar>
@@ -67,7 +67,7 @@ const HeaderBanner = (props) => {
           </Stack>
         </Grid>
 
-        <Grid item md={4}>
+        <Grid item md={4} sx={12}>
           <Typography
             component='div'
             variant='h6'
@@ -85,7 +85,7 @@ const HeaderBanner = (props) => {
               Refresh <RefreshIcon />
             </Button>
 
-            <Button variant='contained' size='small' sx={{ m: 4 }}>
+            <Button variant='contained' size='small' sx={{ m: 1 }}>
               Download <DownloadIcon />
             </Button>
           </Typography>
