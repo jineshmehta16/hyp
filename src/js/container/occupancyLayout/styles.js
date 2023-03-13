@@ -14,6 +14,9 @@ const styles = (theme) => {
         height: '1rem',
       },
     },
+    cardContent: {
+      padding: '5px !important',
+    },
   };
 };
 export default styles;

@@ -29,10 +29,6 @@ const Home = () => {
     });
   }, [overallParkingDetails]);
 
-  const openMap = (level, image) => {
-    navigate(`/parkingMap/${level}`, { state: { imagePath: image } });
-  };
-
   return (
     <>
       <OccupancyLayout
@@ -43,14 +39,6 @@ const Home = () => {
           parkingDetails?.currentUtilizationInPercentage
         }
       />
-
-      <Button onClick={() => openMap('b1', parkingMap)} variant='contained'>
-        Open B1 Map
-      </Button>
-
-      <Button onClick={() => openMap('b2', parkingMap2)} variant='contained'>
-        Open B2 Map
-      </Button>
     </>
   );
 };

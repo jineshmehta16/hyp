@@ -1,20 +1,34 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import LinearProgress from '@mui/material/LinearProgress';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
+import PieChart from '../../component/pieChart';
+import DonutChart from '../../component/donutChart';
+
+import { useNavigate } from 'react-router-dom';
+
+import parkingMap from '../../../assets/images/lowerbasement.png';
 
 const OccupancyLayout = (props) => {
   const { classes } = props;
+  const navigate = useNavigate();
+
+  const openMap = (level, image) => {
+    navigate(`/parkingMap/${level}`, { state: { imagePath: image } });
+  };
   return (
     <Box sx={{ flexGrow: 1 }} m={0}>
-      <Grid container spacing={3}>
-        <Grid item md={8} xs={12}>
-          <Box
+      <Grid container spacing={3} p={4}>
+        <Grid item md={4} xs={12}>
+          <Card
             sx={{
-              height: 160,
+              height: 260,
               border: '3px solid',
               borderColor: (theme) => theme?.status?.success,
             }}
@@ -23,70 +37,21 @@ const OccupancyLayout = (props) => {
               {' '}
               Car Parking Occupancy (Total){' '}
             </Typography>
+            <PieChart
+              occupied={props?.occupied || 0}
+              vacant={props?.vacant || 0}
+              height={170}
+            />
 
-            <Grid container spacing={6} m={2}>
-              <Grid
-                item
-                xs={6}
-                className={[classes?.barHeight, classes.root].join(' ')}
-              >
-                <LinearProgress variant='determinate' value={props?.occupied} />
-
-                <Box
-                  m={3}
-                  sx={{
-                    display: 'flex',
-                  }}
-                >
-                  <Box
-                    component='span'
-                    sx={{
-                      alignItems: 'flex-start',
-                      color: (theme) => theme?.status?.occupied,
-                    }}
-                  >
-                    <Typography variant='body1' fontWeight={600}>
-                      {' '}
-                      {props?.occupied}% <br /> Occupied{' '}
-                    </Typography>
-                  </Box>
-                  <Box
-                    component='span'
-                    sx={{
-                      marginLeft: 'auto',
-                      color: (theme) => theme?.status?.vacant,
-                    }}
-                  >
-                    <Typography variant='body1' fontWeight={600}>
-                      {props?.vacant}% <br /> Vacant{' '}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
-
-              <Grid item xs={6}>
-                <Typography
-                  variant='h4'
-                  sx={{ flexGrow: 1, textAlign: 'center' }}
-                >
-                  {' '}
-                  {props?.currentUtilizationInPercentage}%
-                </Typography>
-                <Typography
-                  variant='h5'
-                  sx={{ flexGrow: 1, textAlign: 'center' }}
-                >
-                  {' '}
-                  Current Utilization
-                </Typography>
-              </Grid>
-            </Grid>
-          </Box>
+            <Typography variant='body2' m={3}>
+              Current Utilization: {props?.currentUtilizationInPercentage}
+            </Typography>
+          </Card>
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid item md={8} xs={12}>
           <Box
             sx={{
-              height: 160,
+              height: 260,
               border: '3px solid',
               borderColor: (theme) => theme?.status?.success,
               textAlign: 'center',
@@ -100,49 +65,27 @@ const OccupancyLayout = (props) => {
 
             <Grid container m={1} spacing={1} pt={1} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <React.Fragment key={levelParkingData?.level}>
-                  <Grid item xs={2}>
-                    <Typography variant='body1'>
-                      {levelParkingData?.level}
+                <Card sx={{ maxWidth: 345 }} key={levelParkingData?.level}>
+                  <CardContent className={classes?.cardContent}>
+                    <Typography gutterBottom variant='h5' component='div'>
+                      Parking Level- {levelParkingData?.level}
                     </Typography>
-                  </Grid>
-                  <Grid item xs={9} className={classes?.root} align='left'>
-                    <LinearProgress
-                      variant='determinate'
-                      value={levelParkingData?.occupied}
+                    <DonutChart
+                      occupied={props?.occupied || 0}
+                      vacant={props?.vacant || 0}
+                      height={100}
                     />
-                    <Box
-                      m={3}
-                      sx={{
-                        display: 'flex',
-                      }}
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      onClick={() => openMap('b1', parkingMap)}
+                      variant='contained'
+                      size='small'
                     >
-                      <Box
-                        component='span'
-                        sx={{
-                          alignItems: 'flex-start',
-                          color: '#B30000',
-                        }}
-                      >
-                        <Typography variant='body1'>
-                          {' '}
-                          {levelParkingData?.occupied}% Occupied{' '}
-                        </Typography>
-                      </Box>
-                      <Box
-                        component='span'
-                        sx={{
-                          marginLeft: 'auto',
-                          color: ' #72cc50',
-                        }}
-                      >
-                        <Typography variant='body1'>
-                          {levelParkingData?.vacant}% Vacant{' '}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                </React.Fragment>
+                      Open Map
+                    </Button>
+                  </CardActions>
+                </Card>
               ))}
             </Grid>
           </Box>
