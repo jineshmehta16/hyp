@@ -8,6 +8,14 @@ export default function PieChart({ occupied, vacant, height }) {
     },
     colors: ['#B30000', '#72cc50'],
     labels: ['occupied', vacant],
+    legend: {
+      fontSize: '16px',
+    },
+    dataLabels: {
+      style: {
+        fontSize: '16px',
+      },
+    },
   };
 
   const series = [];

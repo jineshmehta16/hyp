@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import Toast from './js/common/toast';
 import { connect } from 'react-redux';
 import Footer from './js/component/footer';
-import Header from './js/component/header';
+import HeaderBanner from './js/component/headerBanner';
 import { getToast, getOverlay } from './js/store/common/selectors';
 import LoadingOverlay from './js/common/overlay';
 import GlobalStyles from './js/hooks/globalStyles';
@@ -24,7 +24,7 @@ const AppRouter = (props) => {
           {toast?.status && <Toast />}
           {<GlobalStyles />}
           {overlay && <LoadingOverlay />}
-          {true && <Header />}
+          {true && <HeaderBanner />}
           <Home />
           {true && <Footer />}
         </>

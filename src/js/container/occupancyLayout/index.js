@@ -28,67 +28,85 @@ const OccupancyLayout = (props) => {
         <Grid item md={4} xs={12}>
           <Card
             sx={{
-              height: 260,
-              border: '3px solid',
-              borderColor: (theme) => theme?.status?.success,
+              height: 400,
             }}
           >
-            <Typography variant='h5' m={3}>
-              {' '}
-              Car Parking Occupancy (Total){' '}
-            </Typography>
-            <PieChart
-              occupied={props?.occupied || 0}
-              vacant={props?.vacant || 0}
-              height={170}
-            />
+            <CardContent>
+              <Typography variant='h5' m={3}>
+                {' '}
+                Car Parking Occupancy (Total){' '}
+              </Typography>
+              <PieChart
+                occupied={props?.occupied || 0}
+                vacant={props?.vacant || 0}
+                height={250}
+              />
 
-            <Typography variant='body2' m={3}>
-              Current Utilization: {props?.currentUtilizationInPercentage}
-            </Typography>
+              <Typography variant='h6' m={3}>
+                Current Utilization: {props?.currentUtilizationInPercentage}
+              </Typography>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item md={8} xs={12}>
-          <Box
+          <Card
             sx={{
-              height: 260,
-              border: '3px solid',
-              borderColor: (theme) => theme?.status?.success,
+              height: 400,
               textAlign: 'center',
               justifyContent: 'center',
             }}
           >
-            <Typography variant='h6' align='left' ml={2}>
+            <Typography variant='h6' align='left' ml={2} mt={1}>
               {' '}
               Parking Occupancy (Level-wise)
             </Typography>
 
-            <Grid container m={1} spacing={1} pt={1} align='left'>
+            <Grid container m={0.2} spacing={3} pt={2} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <Card sx={{ maxWidth: 345 }} key={levelParkingData?.level}>
-                  <CardContent className={classes?.cardContent}>
-                    <Typography gutterBottom variant='h5' component='div'>
-                      Parking Level- {levelParkingData?.level}
-                    </Typography>
-                    <DonutChart
-                      occupied={props?.occupied || 0}
-                      vacant={props?.vacant || 0}
-                      height={100}
-                    />
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      onClick={() => openMap('b1', parkingMap)}
-                      variant='contained'
-                      size='small'
-                    >
-                      Open Map
-                    </Button>
-                  </CardActions>
-                </Card>
+                <Grid item md={6} xs={12}>
+                  <Card
+                    key={levelParkingData?.level}
+                    raised
+                    style={{ backgroundColor: '#E8E8E8', marginRight: '2rem' }}
+                  >
+                    <CardContent className={classes?.cardContent}>
+                      <Typography
+                        gutterBottom
+                        variant='subtitle1'
+                        component='div'
+                      >
+                        Parking Level- {levelParkingData?.level}
+                      </Typography>
+                      <DonutChart
+                        occupied={levelParkingData?.occupied || 0}
+                        vacant={levelParkingData?.vacant || 0}
+                        height={180}
+                      />
+
+                      <Typography gutterBottom variant='body1' component='div'>
+                        To view the map of {props?.levelParkingData?.level}{' '}
+                        parking level click on the button below
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        onClick={() =>
+                          openMap(
+                            levelParkingData?.level?.toLowerCase(),
+                            parkingMap
+                          )
+                        }
+                        variant='contained'
+                        size='small'
+                      >
+                        Open Map
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
               ))}
             </Grid>
-          </Box>
+          </Card>
         </Grid>
       </Grid>
     </Box>
