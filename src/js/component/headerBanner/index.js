@@ -12,11 +12,14 @@ import Button from '@mui/material/Button';
 import { getOverallParkingInformation } from '../../store/dashboard/action';
 import { useDispatch } from 'react-redux';
 import DownloadIcon from '@mui/icons-material/Download';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderBanner = (props) => {
   const { classes } = props;
   const [refreshParkingData, setRefreshParkingData] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getOverallParkingInformation());
@@ -41,6 +44,10 @@ const HeaderBanner = (props) => {
     const dateTimeStr = currentDate + ' ' + currentTime;
 
     return dateTimeStr;
+  };
+
+  const logout = () => {
+    navigate('/login');
   };
 
   return (
@@ -79,14 +86,23 @@ const HeaderBanner = (props) => {
             <Button
               variant='contained'
               size='small'
-              sx={{ m: 4 }}
+              sx={{ m: 2 }}
               onClick={() => setRefreshParkingData((prev) => !prev)}
             >
               Refresh <RefreshIcon />
             </Button>
 
-            <Button variant='contained' size='small' sx={{ m: 1 }}>
+            <Button variant='contained' size='small' sx={{ m: 2 }}>
               Download <DownloadIcon />
+            </Button>
+
+            <Button
+              variant='contained'
+              size='small'
+              sx={{ m: 2 }}
+              onClick={logout}
+            >
+              Logout <LogoutIcon />
             </Button>
           </Typography>
         </Grid>
