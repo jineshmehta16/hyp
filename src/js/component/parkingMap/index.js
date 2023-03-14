@@ -3,13 +3,17 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
+import { useSelector } from 'react-redux';
+import { getGlobalRefresh } from '../../store/sensors/selector';
 
 const ParkingMap = (props) => {
   const { classes } = props;
   const { state } = useLocation();
   const [dataSet, setDataset] = useState([]);
   const [parkingStatus, setParkingStatus] = useState({});
-  const count = useRef(0);
+  const refreshFlag = useSelector((state) => getGlobalRefresh(state));
+
+  // const count = useRef(0);
 
   // To read the data from JSON
   const SENSORS_DATA = '/db/actualParkingMapData.json';
@@ -48,10 +52,9 @@ const ParkingMap = (props) => {
     });
 
     axios.get(SENSORS_DATA).then((res) => {
-      console.log(res);
       res?.data?.sensors && setParkingStatus(res?.data?.sensors);
     });
-  }, []);
+  }, [refreshFlag]);
 
   return (
     <>

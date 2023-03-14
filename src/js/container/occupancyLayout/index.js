@@ -28,11 +28,11 @@ const OccupancyLayout = (props) => {
         <Grid item lg={4} md={12} xs={12}>
           <Card
             sx={{
-              height: 400,
+              height: '100%',
             }}
           >
-            <CardContent>
-              <Typography variant='h5' m={3}>
+            <CardContent sx={{ padding: '4px 9px' }}>
+              <Typography variant='h6' m={0} align='left'>
                 {' '}
                 Car Parking Occupancy (Total){' '}
               </Typography>
@@ -51,9 +51,9 @@ const OccupancyLayout = (props) => {
         <Grid item lg={8} md={12} xs={12}>
           <Card
             sx={{
-              height: 'max-content',
+              height: '100%',
               paddingBottom: '18px',
-              marginBottom: '50px',
+              marginBottom: '2rem',
               textAlign: 'center',
               justifyContent: 'center',
             }}

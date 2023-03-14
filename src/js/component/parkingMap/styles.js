@@ -1,5 +1,4 @@
-const styles = (theme, background) => {
-  console.log(background);
+const styles = (theme) => {
   return {
     wrapper: {
       width: '100vw',

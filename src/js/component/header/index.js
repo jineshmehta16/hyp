@@ -15,24 +15,24 @@ import Avatar from '@mui/material/Avatar';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Button from '@mui/material/Button';
 import { getOverallParkingInformation } from '../../store/dashboard/action';
+import { globalRefreshed } from '../../store/sensors/action';
 import { useDispatch, useSelector } from 'react-redux';
 import DownloadIcon from '@mui/icons-material/Download';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import { getGlobalRefresh } from '../../store/sensors/selector';
 
 const drawerWidth = 240;
 
 const Header = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [refreshParkingData, setRefreshParkingData] = useState(true);
+  //  const [refreshParkingData, setRefreshParkingData] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(getOverallParkingInformation());
-  }, [refreshParkingData]);
+  const refreshFlag = useSelector((state) => getGlobalRefresh(state));
 
   const logout = () => {
     navigate('/login');
@@ -59,7 +59,7 @@ const Header = (props) => {
         </ListItem>
         <ListItem
           onClick={() => {
-            setRefreshParkingData((prev) => !prev);
+            dispatch(globalRefreshed(!refreshFlag));
           }}
           primary='Refresh'
         >
@@ -124,7 +124,9 @@ const Header = (props) => {
                 border: '2px solid',
                 marginRight: '10px',
               }}
-              onClick={() => setRefreshParkingData((prev) => !prev)}
+              onClick={() => {
+                dispatch(globalRefreshed(!refreshFlag));
+              }}
             >
               {' '}
               Refresh
