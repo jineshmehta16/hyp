@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import b1Map from '../../../assets/images/lowerbasement.png';
 import b2Map from '../../../assets/images/upperbasement.png';
 
-const ParkingDataCard = ({ levelParkingData }) => {
+const ParkingDataCard = ({ levelParkingData, imagepath }) => {
   const navigate = useNavigate();
 
   const openMap = (level, image) => {
@@ -43,10 +43,7 @@ const ParkingDataCard = ({ levelParkingData }) => {
       <CardActions>
         <Button
           onClick={() =>
-            openMap(
-              levelParkingData?.level?.toLowerCase(),
-              levelParkingData?.level?.toLowerCase() === 'b1' ? b1Map : b2Map
-            )
+            openMap(levelParkingData?.level?.toLowerCase(), imagepath)
           }
           variant='contained'
           size='small'

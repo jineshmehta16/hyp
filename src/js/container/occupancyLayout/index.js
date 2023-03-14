@@ -7,6 +7,14 @@ import Typography from '@mui/material/Typography';
 import PieChart from '../../component/pieChart';
 import ParkingDataCard from '../../component/parkingDataCard';
 
+import b1Map from '../../../assets/images/lowerbasement.png';
+import b2Map from '../../../assets/images/upperbasement.png';
+
+const floorImagePath = {
+  B1: b1Map,
+  B2: b2Map,
+};
+
 const OccupancyLayout = (props) => {
   const emptyParkingData = {
     level: 'B2',
@@ -59,17 +67,20 @@ const OccupancyLayout = (props) => {
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
                 <>
                   <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                    <ParkingDataCard levelParkingData={levelParkingData} />
-                    {levelParkingData.length === 1 && (
-                      <ParkingDataCard levelParkingData={emptyParkingData} />
-                    )}
+                    <ParkingDataCard
+                      levelParkingData={levelParkingData}
+                      imagepath={floorImagePath?.[levelParkingData?.level]}
+                    />
                   </Grid>
                 </>
               ))}
 
-              {props?.parkingLevelOccupancy?.length == 1 && (
+              {props?.parkingLevelOccupancy?.length === 1 && (
                 <Grid item md={6} xs={12}>
-                  <ParkingDataCard levelParkingData={emptyParkingData} />
+                  <ParkingDataCard
+                    levelParkingData={emptyParkingData}
+                    imagepath={floorImagePath?.['B2']}
+                  />
                 </Grid>
               )}
             </Grid>
