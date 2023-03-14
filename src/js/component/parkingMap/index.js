@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-
-import parkingMap from '../../../assets/images/lowerbasement.png';
-import parkingMap2 from '../../../assets/images/upperbasement.png';
+import { withStyles } from '@mui/styles';
+import styles from './styles';
 
 const ParkingMap = (props) => {
+  const { classes } = props;
   const { state } = useLocation();
   const [dataSet, setDataset] = useState([]);
   const [parkingStatus, setParkingStatus] = useState({});
@@ -37,6 +37,11 @@ const ParkingMap = (props) => {
   //     };
   //   }, []);
 
+  // //use this code to print the mapping and pass in floor json file
+  // useEffect(() => {
+  //   console.log(JSON.stringify(dataSet));
+  // }, [dataSet]);
+
   useEffect(() => {
     axios.get('/db/parkingMapData.json').then((response) => {
       setDataset(response?.data);
@@ -48,40 +53,16 @@ const ParkingMap = (props) => {
     });
   }, []);
 
-  // //use this code to print the mapping and pass in floor json file
-  // useEffect(() => {
-  //   console.log(JSON.stringify(dataSet));
-  // }, [dataSet]);
-
   return (
     <>
       {/* parking number
       <input
         onChange={(e) => (count.current = e.target.value)}
-        width={300}
-        style={{ position: 'relative' }}
+        className={classes.textBox}
       /> */}
-      <div
-        id='map'
-        style={{
-          width: '100vw',
-          height: '100vh',
-          position: 'relative',
-          overflow: 'auto',
-        }}
-      >
-        <img
-          src={state?.imagePath}
-          alt='test'
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            zIndex: 2,
-          }}
-        />
+
+      <div id='map' className={classes.wrapper}>
+        <img src={state?.imagePath} alt='test' className={classes.image} />
         {dataSet.map((each) => (
           <div
             key={each?.parkingNumber}
@@ -111,4 +92,4 @@ const ParkingMap = (props) => {
   );
 };
 
-export default ParkingMap;
+export default withStyles(styles)(ParkingMap);

@@ -1,14 +1,11 @@
 import React from 'react';
-
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import DonutChart from '../../component/donutChart';
 import Button from '@mui/material/Button';
-
 import { useNavigate } from 'react-router-dom';
-
 import parkingMap from '../../../assets/images/lowerbasement.png';
 
 const ParkingDataCard = ({ levelParkingData }) => {
@@ -21,7 +18,10 @@ const ParkingDataCard = ({ levelParkingData }) => {
     <Card
       key={levelParkingData?.level}
       raised
-      style={{ backgroundColor: '#E8E8E8', marginRight: '2rem' }}
+      sx={{
+        backgroundColor: (theme) => theme?.palette?.primary?.light,
+        marginRight: '2rem',
+      }}
     >
       <CardContent>
         <Typography gutterBottom variant='subtitle1' component='div'>
