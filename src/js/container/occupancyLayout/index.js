@@ -8,6 +8,12 @@ import PieChart from '../../component/pieChart';
 import ParkingDataCard from '../../component/parkingDataCard';
 
 const OccupancyLayout = (props) => {
+  const emptyParkingData = {
+    level: 'B2',
+    occupied: 0,
+    vacant: 100,
+    currentUtilizationInPercentage: 0,
+  };
   return (
     <Box sx={{ flexGrow: 1 }} m={0}>
       <Grid container spacing={3} p={4}>
@@ -51,10 +57,21 @@ const OccupancyLayout = (props) => {
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                  <ParkingDataCard levelParkingData={levelParkingData} />
-                </Grid>
+                <>
+                  <Grid item md={6} xs={12} key={levelParkingData?.level}>
+                    <ParkingDataCard levelParkingData={levelParkingData} />
+                    {levelParkingData.length === 1 && (
+                      <ParkingDataCard levelParkingData={emptyParkingData} />
+                    )}
+                  </Grid>
+                </>
               ))}
+
+              {props?.parkingLevelOccupancy?.length == 1 && (
+                <Grid item md={6} xs={12}>
+                  <ParkingDataCard levelParkingData={emptyParkingData} />
+                </Grid>
+              )}
             </Grid>
           </Card>
         </Grid>

@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import DonutChart from '../../component/donutChart';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import parkingMap from '../../../assets/images/lowerbasement.png';
+import b1Map from '../../../assets/images/lowerbasement.png';
+import b2Map from '../../../assets/images/upperbasement.png';
 
 const ParkingDataCard = ({ levelParkingData }) => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const ParkingDataCard = ({ levelParkingData }) => {
   const openMap = (level, image) => {
     navigate(`/parkingMap/${level}`, { state: { imagePath: image } });
   };
+
   return (
     <Card
       key={levelParkingData?.level}
@@ -41,7 +43,10 @@ const ParkingDataCard = ({ levelParkingData }) => {
       <CardActions>
         <Button
           onClick={() =>
-            openMap(levelParkingData?.level?.toLowerCase(), parkingMap)
+            openMap(
+              levelParkingData?.level?.toLowerCase(),
+              levelParkingData?.level?.toLowerCase() === 'b1' ? b1Map : b2Map
+            )
           }
           variant='contained'
           size='small'

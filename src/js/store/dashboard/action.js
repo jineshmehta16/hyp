@@ -2,9 +2,9 @@ import { SET_OVERALL_PARKING_DETAILS } from '../../actions/actionTypes';
 import { get } from '../../axiosUtils/appUtils';
 import { manageToast, setOverlayStatus } from '../common/actions';
 
-// const PARKING_OCCUPANCY_API_URL =
-//   'http://sanralpharma.com/webservices/public/parking/occupancy';
-const PARKING_OCCUPANCY_API_URL = '/db/dashboardData.json';
+const PARKING_OCCUPANCY_API_URL =
+  'http://sanralpharma.com/webservices/public/parking/occupancy';
+// const PARKING_OCCUPANCY_API_URL = '/db/dashboardData.json';
 
 export const setOverallParkingDetails = (data) => {
   return {
