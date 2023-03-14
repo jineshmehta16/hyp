@@ -25,7 +25,7 @@ const OccupancyLayout = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }} m={0}>
       <Grid container spacing={3} p={4}>
-        <Grid item md={4} xs={12}>
+        <Grid item lg={4} md={12} xs={12}>
           <Card
             sx={{
               height: 400,
@@ -48,7 +48,7 @@ const OccupancyLayout = (props) => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item md={8} xs={12}>
+        <Grid item lg={8} md={12} xs={12}>
           <Card
             sx={{
               height: 'max-content',
@@ -65,7 +65,7 @@ const OccupancyLayout = (props) => {
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <Grid item md={6} xs={12}>
+                <Grid item md={6} xs={12} key={levelParkingData?.level}>
                   <Card
                     key={levelParkingData?.level}
                     raised

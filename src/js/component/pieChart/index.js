@@ -15,9 +15,16 @@ export default function PieChart({ occupied, vacant, height }) {
     legend: {
       fontSize: '18px',
     },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          offset: -10,
+        },
+      },
+    },
     dataLabels: {
       style: {
-        fontSize: '18px',
+        fontSize: '1.2rem',
       },
     },
   };

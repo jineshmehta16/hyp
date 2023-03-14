@@ -23,13 +23,13 @@ let theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#15716b',
+      main: '#000000',
       light: '#3baf9f',
       dark: '#00322F',
       darker: 'rgba(0, 0, 0, 0.87)',
     },
     secondary: {
-      main: '#8A8383',
+      main: '#ffffff',
       contrastText: '#fff',
       light: '#e9e9e9',
       lighter: '#ACACAC',
@@ -46,7 +46,7 @@ let theme = createTheme({
   status: {
     danger: 'red',
     occupied: '#B30000',
-    vacant: '#72cc50',
+    vacant: '#006600',
     success: 'green',
   },
 });

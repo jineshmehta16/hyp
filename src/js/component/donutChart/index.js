@@ -15,9 +15,16 @@ export default function DonutChart({ occupied, vacant, height }) {
     legend: {
       fontSize: '16px',
     },
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '45%',
+        },
+      },
+    },
     dataLabels: {
       style: {
-        fontSize: '16px',
+        fontSize: '0.8rem',
       },
     },
   };

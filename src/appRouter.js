@@ -8,7 +8,7 @@ import {
 import Toast from './js/common/toast';
 import { connect } from 'react-redux';
 import Footer from './js/component/footer';
-import HeaderBanner from './js/component/headerBanner';
+import Header from './js/component/header';
 import { getToast, getOverlay } from './js/store/common/selectors';
 import LoadingOverlay from './js/common/overlay';
 import GlobalStyles from './js/hooks/globalStyles';
@@ -29,7 +29,7 @@ const AppRouter = (props) => {
           {toast?.status && <Toast />}
           {<GlobalStyles />}
           {overlay && <LoadingOverlay />}
-          {true && <HeaderBanner />}
+          {true && <Header />}
           <Outlet />
           {true && <Footer />}
         </>
