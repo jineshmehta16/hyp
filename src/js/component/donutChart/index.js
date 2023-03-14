@@ -4,13 +4,11 @@ import Chart from 'react-apexcharts';
 
 export default function DonutChart({ occupied, vacant, height }) {
   const theme = useTheme();
-  const occupiedColor = theme?.status?.occupied;
-  const vacantColor = theme?.status?.vacant;
   const options = {
     chart: {
-      foreColor: '#000000',
+      foreColor: theme?.palette?.primary?.main,
     },
-    colors: [occupiedColor, vacantColor],
+    colors: [theme?.status?.occupied, theme?.status?.vacant],
     labels: ['occupied', 'vacant'],
     legend: {
       fontSize: '16px',

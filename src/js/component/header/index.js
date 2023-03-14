@@ -12,11 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import HomeIcon from '@mui/icons-material/Home';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Button from '@mui/material/Button';
 import { getOverallParkingInformation } from '../../store/dashboard/action';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DownloadIcon from '@mui/icons-material/Download';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +26,6 @@ const drawerWidth = 240;
 
 const Header = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const [refreshParkingData, setRefreshParkingData] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,7 +58,9 @@ const Header = (props) => {
           <ListItemText primary='Download' />
         </ListItem>
         <ListItem
-          onClick={() => setRefreshParkingData((prev) => !prev)}
+          onClick={() => {
+            setRefreshParkingData((prev) => !prev);
+          }}
           primary='Refresh'
         >
           <ListItemAvatar>
@@ -84,7 +84,7 @@ const Header = (props) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', bgcolor: 'black', m: '3rem' }}>
+    <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem' }}>
       <CssBaseline />
       <AppBar component='nav'>
         <Toolbar>
@@ -106,21 +106,22 @@ const Header = (props) => {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <Button
+              variant='outlined'
+              color='secondary'
               sx={{
-                color: '#fff',
-                border: '1px solid white',
+                border: '2px solid',
                 marginRight: '10px',
               }}
-              variant='outlined'
             >
               {' '}
               Download
               <DownloadIcon />
             </Button>
             <Button
+              variant='outlined'
+              color='secondary'
               sx={{
-                color: '#fff',
-                border: '1px solid white',
+                border: '2px solid',
                 marginRight: '10px',
               }}
               onClick={() => setRefreshParkingData((prev) => !prev)}
@@ -130,7 +131,12 @@ const Header = (props) => {
               <RefreshIcon />
             </Button>
             <Button
-              sx={{ color: '#fff', border: '1px solid white' }}
+              variant='outlined'
+              color='secondary'
+              sx={{
+                border: '2px solid',
+                marginRight: '10px',
+              }}
               onClick={logout}
             >
               {' '}

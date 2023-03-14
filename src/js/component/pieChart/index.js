@@ -4,13 +4,11 @@ import { useTheme } from '@mui/material/styles';
 
 export default function PieChart({ occupied, vacant, height }) {
   const theme = useTheme();
-  const occupiedColor = theme?.status?.occupied;
-  const vacantColor = theme?.status?.vacant;
   const options = {
     chart: {
       type: 'pie',
     },
-    colors: [occupiedColor, vacantColor],
+    colors: [theme?.status?.occupied, theme?.status?.vacant],
     labels: ['occupied', 'vacant'],
     legend: {
       fontSize: '18px',

@@ -11,6 +11,12 @@ const ParkingMap = (props) => {
   const [parkingStatus, setParkingStatus] = useState({});
   const count = useRef(0);
 
+  // To read the data from JSON
+  const SENSORS_DATA = '/db/actualParkingMapData.json';
+
+  // const SENSORS_DATA =
+  //   'https://api.parkomate.com/api/v2/occupancy?property=korum_thane&key=4f63a413-39c8-4ae8-bd6f-450294d90585&granularity=sensor';
+
   //   useEffect(() => {
   // //use this code to map parking numbers and its location===================================
   //     document.getElementById('map').onclick = function (e) {
@@ -32,22 +38,17 @@ const ParkingMap = (props) => {
   //   }, []);
 
   useEffect(() => {
-    // actual  end pointcall  --  store
-    // loop on sensors object object.entries() Object.key // will get the data
-    // parallelk calls
-    // json object se
-
     axios.get('/db/parkingMapData.json').then((response) => {
       setDataset(response?.data);
     });
 
-    axios.get('/db/actualParkingMapData.json').then((res) => {
+    axios.get(SENSORS_DATA).then((res) => {
       console.log(res);
       res?.data?.sensors && setParkingStatus(res?.data?.sensors);
     });
   }, []);
 
-  // //use this code to print the mapping and pase in floor json file
+  // //use this code to print the mapping and pass in floor json file
   // useEffect(() => {
   //   console.log(JSON.stringify(dataSet));
   // }, [dataSet]);

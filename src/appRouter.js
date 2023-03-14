@@ -1,10 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Link,
-  Outlet,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Toast from './js/common/toast';
 import { connect } from 'react-redux';
 import Footer from './js/component/footer';

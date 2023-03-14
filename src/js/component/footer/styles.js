@@ -1,9 +1,8 @@
 const styles = (theme) => {
-  const secondaryColor = theme?.palette?.secondary;
   return {
     footerWrapper: {
-      background: secondaryColor?.footerBgColor,
-      color: secondaryColor?.contrastText,
+      background: theme?.palette?.primary?.main,
+      color: theme?.palette?.secondary?.main,
       padding: '16px',
       textAlign: 'center',
       position: 'absolute',
