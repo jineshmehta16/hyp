@@ -10,8 +10,8 @@ import b1Map from '../../../assets/images/lowerbasement.png';
 import b2Map from '../../../assets/images/upperbasement.png';
 
 const floorImagePath = {
-  B1: b1Map,
-  B2: b2Map,
+  LB1: b1Map,
+  UB1: b2Map,
 };
 
 const OccupancyLayout = (props) => {
@@ -67,6 +67,7 @@ const OccupancyLayout = (props) => {
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
                 <>
                   <Grid item md={6} xs={12} key={levelParkingData?.level}>
+                    {levelParkingData?.level}
                     <ParkingDataCard
                       levelParkingData={levelParkingData}
                       imagepath={floorImagePath?.[levelParkingData?.level]}
