@@ -4,6 +4,7 @@ import {
   MANAGE_DIALOG,
   MANAGE_TOAST,
   SET_COMPONENT_OVERLAY,
+  REFRESH_PAGE_DATA,
 } from '../../actions/actionTypes';
 import * as utils from '../../axiosUtils/appUtils';
 
@@ -38,6 +39,13 @@ export const manageToast = (data) => {
 export const manageDialog = (data) => {
   return {
     type: MANAGE_DIALOG,
+    payload: data,
+  };
+};
+
+export const refreshPageData = (data) => {
+  return {
+    type: REFRESH_PAGE_DATA,
     payload: data,
   };
 };

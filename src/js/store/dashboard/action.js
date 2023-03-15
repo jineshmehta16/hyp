@@ -1,7 +1,4 @@
-import {
-  SET_OVERALL_PARKING_DETAILS,
-  GLOBAL_REFRESH,
-} from '../../actions/actionTypes';
+import { SET_OVERALL_PARKING_DETAILS } from '../../actions/actionTypes';
 import { get } from '../../axiosUtils/appUtils';
 import { manageToast, setOverlayStatus } from '../common/actions';
 
@@ -12,13 +9,6 @@ const PARKING_OCCUPANCY_API_URL =
 export const setOverallParkingDetails = (data) => {
   return {
     type: SET_OVERALL_PARKING_DETAILS,
-    payload: data,
-  };
-};
-
-export const globalRefreshed = (data) => {
-  return {
-    type: GLOBAL_REFRESH,
     payload: data,
   };
 };

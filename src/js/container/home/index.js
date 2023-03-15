@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOverallParkingInformation } from '../../store/dashboard/action';
 import { getOverallParkingDetails } from '../../store/dashboard/selector';
-import { getGlobalRefresh } from '../../store/sensors/selector';
+import { getRefreshedPageData } from '../../store/common/selectors';
 import OccupancyLayout from '../occupancyLayout';
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
     getOverallParkingDetails(state)
   );
 
-  const refreshFlag = useSelector((state) => getGlobalRefresh(state));
+  const refreshFlag = useSelector((state) => getRefreshedPageData(state));
 
   useEffect(() => {
     dispatch(getOverallParkingInformation());

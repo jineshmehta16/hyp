@@ -4,6 +4,7 @@ import {
   MANAGE_DIALOG,
   MANAGE_TOAST,
   SET_COMPONENT_OVERLAY,
+  REFRESH_PAGE_DATA,
 } from '../../actions/actionTypes';
 
 const getInitialState = () => ({
@@ -22,6 +23,7 @@ const getInitialState = () => ({
     status: false,
     type: '',
   },
+  refreshPageData: true,
 });
 
 export default function CommonReducer(state = getInitialState(), action) {
@@ -45,6 +47,10 @@ export default function CommonReducer(state = getInitialState(), action) {
     case MANAGE_DIALOG:
       return Object.assign({}, state, {
         dialog: action.payload,
+      });
+    case REFRESH_PAGE_DATA:
+      return Object.assign({}, state, {
+        refreshPageData: action.payload,
       });
     default:
       return state;

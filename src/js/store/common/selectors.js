@@ -43,3 +43,10 @@ export const loggedInUser = createSelector(
     return CommonReducer.userDetails;
   }
 );
+
+export const getRefreshedPageData = createSelector(
+  [CommonReducerSelector],
+  (CommonReducer) => {
+    return CommonReducer?.refreshPageData;
+  }
+);
