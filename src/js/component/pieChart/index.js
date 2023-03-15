@@ -1,6 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 export default function PieChart({ occupied, vacant, height }) {
   const theme = useTheme();
@@ -32,8 +33,8 @@ export default function PieChart({ occupied, vacant, height }) {
   series.push(vacant);
 
   return (
-    <div>
+    <Box sx={{ paddingTop: '3.5rem' }}>
       <Chart options={options} series={series} type='pie' height={height} />
-    </div>
+    </Box>
   );
 }

@@ -42,8 +42,9 @@ const OccupancyLayout = (props) => {
                 height={250}
               />
 
-              <Typography variant='h6' m={3}>
-                Current Utilization: {props?.currentUtilizationInPercentage}%
+              <Typography variant='body1' m={5}>
+                Current Utilization:{' '}
+                <b>{props?.currentUtilizationInPercentage}%</b>
               </Typography>
             </CardContent>
           </Card>

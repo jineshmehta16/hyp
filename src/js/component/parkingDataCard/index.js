@@ -36,8 +36,8 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
         />
 
         <Typography gutterBottom variant='body1' component='div'>
-          To view the map of {levelParkingData?.level} parking level click on
-          the button below
+          To view the map of <b>{levelParkingData?.level} </b>parking level
+          click on the button below
         </Typography>
       </CardContent>
       <CardActions>
