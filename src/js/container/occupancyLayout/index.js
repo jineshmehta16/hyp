@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import PieChart from '../../component/pieChart';
 import ParkingDataCard from '../../component/parkingDataCard';
-
 import b1Map from '../../../assets/images/lowerbasement.png';
 import b2Map from '../../../assets/images/upperbasement.png';
 

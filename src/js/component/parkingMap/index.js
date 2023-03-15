@@ -5,6 +5,7 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useSelector } from 'react-redux';
 import { getRefreshedPageData } from '../../store/common/selectors';
+import { get } from '../../axiosUtils/appUtils';
 
 const ParkingMap = (props) => {
   const { classes } = props;
@@ -14,14 +15,7 @@ const ParkingMap = (props) => {
   const refreshFlag = useSelector((state) => getRefreshedPageData(state));
 
   // const count = useRef(0);
-
   // To read the data from JSON
-  // const SENSORS_DATA = '/db/actualParkingMapData.json';
-  const SENSORS_DATA = 'http://sanralpharma.com/webservices/public/parking/map';
-
-  // const SENSORS_DATA =
-  //   'https://api.parkomate.com/api/v2/occupancy?property=korum_thane&key=4f63a413-39c8-4ae8-bd6f-450294d90585&granularity=sensor';
-
   //   useEffect(() => {
   // //use this code to map parking numbers and its location===================================
   //     document.getElementById('map').onclick = function (e) {
@@ -52,7 +46,7 @@ const ParkingMap = (props) => {
       setDataset(response?.data);
     });
 
-    axios.get(SENSORS_DATA).then((res) => {
+    get('/map').then((res) => {
       res?.data?.data?.sensors && setParkingStatus(res?.data?.data?.sensors);
     });
   }, [refreshFlag]);

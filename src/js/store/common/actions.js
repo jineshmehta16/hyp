@@ -6,7 +6,6 @@ import {
   SET_COMPONENT_OVERLAY,
   REFRESH_PAGE_DATA,
 } from '../../actions/actionTypes';
-import * as utils from '../../axiosUtils/appUtils';
 
 export const setOverlayStatus = (data) => {
   return {

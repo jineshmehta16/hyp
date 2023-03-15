@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,13 +14,11 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Button from '@mui/material/Button';
-import { getOverallParkingInformation } from '../../store/dashboard/action';
 import { refreshPageData } from '../../store/common/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import DownloadIcon from '@mui/icons-material/Download';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
-
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { getRefreshedPageData } from '../../store/common/selectors';
 
@@ -28,7 +26,6 @@ const drawerWidth = 240;
 
 const Header = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  //  const [refreshParkingData, setRefreshParkingData] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

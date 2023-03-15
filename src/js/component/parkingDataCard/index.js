@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import DonutChart from '../../component/donutChart';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import b1Map from '../../../assets/images/lowerbasement.png';
-import b2Map from '../../../assets/images/upperbasement.png';
 
 const ParkingDataCard = ({ levelParkingData, imagepath }) => {
   const navigate = useNavigate();
@@ -21,7 +19,7 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
       key={levelParkingData?.level}
       raised
       sx={{
-        backgroundColor: (theme) => theme?.palette?.primary?.light,
+        backgroundColor: (theme) => theme?.palette?.cardBg?.main,
         marginRight: '2rem',
       }}
     >
