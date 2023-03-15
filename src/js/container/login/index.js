@@ -128,7 +128,7 @@ const Login = (props) => {
       spacing={2}
       direction='column'
       className={classes?.root}
-      minHeight='100vh'
+      minHeight='90vh'
     >
       <Paper elevation={3}>
         <Card>

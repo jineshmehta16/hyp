@@ -35,19 +35,11 @@ const AppRouter = (props) => {
           path: 'parkingMap/:level',
           element: <ParkingMap />,
         },
+        {
+          path: '/login',
+          element: <Login />,
+        },
       ],
-    },
-
-    {
-      path: 'login',
-      element: (
-        <>
-          {toast?.status && <Toast />}
-          {<GlobalStyles />}
-          {overlay && <LoadingOverlay />}
-          <Login />
-        </>
-      ),
     },
   ]);
 

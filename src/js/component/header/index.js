@@ -32,6 +32,7 @@ const Header = (props) => {
   const refreshFlag = useSelector((state) => getRefreshedPageData(state));
 
   const logout = () => {
+    sessionStorage.clear();
     navigate('/login');
   };
 
@@ -45,38 +46,42 @@ const Header = (props) => {
         HyP Parking Management Dashboard
       </Typography>
       <Divider />
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <DownloadIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary='Download' />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            dispatch(refreshPageData(!refreshFlag));
-          }}
-          primary='Refresh'
+      {sessionStorage.getItem('emailId') && (
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
-          <ListItemAvatar>
-            <Avatar>
-              <RefreshIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary='Refresh' />
-        </ListItem>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <DownloadIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary='Download' />
+          </ListItem>
+          <ListItem
+            onClick={() => {
+              dispatch(refreshPageData(!refreshFlag));
+            }}
+            primary='Refresh'
+          >
+            <ListItemAvatar>
+              <Avatar>
+                <RefreshIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary='Refresh' />
+          </ListItem>
 
-        <ListItem onClick={logout}>
-          <ListItemAvatar>
-            <Avatar>
-              <LogoutIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary='Logout' />
-        </ListItem>
-      </List>
+          <ListItem onClick={logout}>
+            <ListItemAvatar>
+              <Avatar>
+                <LogoutIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary='Logout' />
+          </ListItem>
+        </List>
+      )}
     </Box>
   );
 
@@ -85,85 +90,87 @@ const Header = (props) => {
       <CssBaseline />
       <AppBar component='nav'>
         <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
+          {sessionStorage.getItem('emailId') && (
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             HyP Parking Management Dashboard
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Button
-              variant='outlined'
-              color='secondary'
-              sx={{
-                border: '2px solid',
-                marginRight: '10px',
-              }}
-            >
-              {' '}
-              Download
-              <DownloadIcon />
-            </Button>
-            <Button
-              variant='outlined'
-              color='secondary'
-              sx={{
-                border: '2px solid',
-                marginRight: '10px',
-              }}
-              onClick={() => {
-                dispatch(refreshPageData(!refreshFlag));
-              }}
-            >
-              {' '}
-              Refresh
-              <RefreshIcon />
-            </Button>
-            <Button
-              variant='outlined'
-              color='secondary'
-              sx={{
-                border: '2px solid',
-                marginRight: '10px',
-              }}
-              onClick={logout}
-            >
-              {' '}
-              Logout
-              <LogoutIcon />
-            </Button>
-          </Box>
+          {sessionStorage.getItem('emailId') && (
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Button
+                variant='outlined'
+                color='secondary'
+                sx={{
+                  border: '2px solid',
+                  marginRight: '10px',
+                }}
+              >
+                {' '}
+                Download
+                <DownloadIcon />
+              </Button>
+              <Button
+                variant='outlined'
+                color='secondary'
+                sx={{
+                  border: '2px solid',
+                  marginRight: '10px',
+                }}
+                onClick={() => {
+                  dispatch(refreshPageData(!refreshFlag));
+                }}
+              >
+                {' '}
+                Refresh
+                <RefreshIcon />
+              </Button>
+              <Button
+                variant='outlined'
+                color='secondary'
+                sx={{
+                  border: '2px solid',
+                  marginRight: '10px',
+                }}
+                onClick={logout}
+              >
+                {' '}
+                Logout
+                <LogoutIcon />
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
-      <Box component='nav'>
-        <Drawer
-          variant='temporary'
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+      {sessionStorage.getItem('emailId') && (
+        <Box component='nav'>
+          <Drawer
+            variant='temporary'
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true,
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+      )}
     </Box>
   );
 };
