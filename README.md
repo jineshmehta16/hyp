@@ -68,3 +68,59 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### to read and save pixels from map add this into parkingMap>>index.js file
+
+const count = useRef(0);
+
+To read the data from JSON
+
+useEffect(() => {
+
+### use this code to map parking numbers and its location===================================
+
+document.getElementById('map').onclick = function (e) {
+
+let percentX = e?.offsetX / this.offsetWidth;
+
+let percentY = e?.offsetY / this.offsetHeight;
+
+console.log(percentX \* 100);
+
+console.log(percentY \* 100);
+
+setDataset((pre) => [
+
+...pre,
+
+{
+
+parkingNumber: count.current,
+
+xCord: percentX \* 100,
+
+yCord: percentY \* 100,
+
+occupied: true,
+
+position: 'H',
+
+},
+
+]);
+
+};
+
+}, []);
+
+### use this code to print the mapping and pass in floor json file
+
+useEffect(() => {
+
+console.log(JSON.stringify(dataSet));
+
+}, [dataSet]);
+
+### add it before div with id="map"
+
+parking number <input onChange={(e) => (count.current = e.target.value)} className={classes.textBox}/>
