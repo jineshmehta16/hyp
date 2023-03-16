@@ -33,7 +33,7 @@ export default function PieChart({ occupied, vacant, height }) {
   series.push(vacant);
 
   return (
-    <Box sx={{ paddingTop: '3.5rem' }}>
+    <Box sx={{ paddingTop: '1.5rem' }}>
       <Chart options={options} series={series} type='pie' height={height} />
     </Box>
   );

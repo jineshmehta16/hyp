@@ -16,7 +16,6 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import Button from '@mui/material/Button';
 import { refreshPageData } from '../../store/common/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import DownloadIcon from '@mui/icons-material/Download';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -50,14 +49,6 @@ const Header = (props) => {
         <List
           sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <DownloadIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary='Download' />
-          </ListItem>
           <ListItem
             onClick={() => {
               dispatch(refreshPageData(!refreshFlag));
@@ -86,7 +77,7 @@ const Header = (props) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem' }}>
+    <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem', mb: '0.5rem' }}>
       <CssBaseline />
       <AppBar component='nav'>
         <Toolbar>
@@ -106,18 +97,6 @@ const Header = (props) => {
           </Typography>
           {sessionStorage.getItem('emailId') && (
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              <Button
-                variant='outlined'
-                color='secondary'
-                sx={{
-                  border: '2px solid',
-                  marginRight: '10px',
-                }}
-              >
-                {' '}
-                Download
-                <DownloadIcon />
-              </Button>
               <Button
                 variant='outlined'
                 color='secondary'

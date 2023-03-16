@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import PieChart from '../../component/pieChart';
+import ReportForm from '../../component/reportForm';
 import ParkingDataCard from '../../component/parkingDataCard';
 import b1Map from '../../../assets/images/lowerbasement.png';
 import b2Map from '../../../assets/images/upperbasement.png';
@@ -67,11 +68,62 @@ const OccupancyLayout = (props) => {
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
                 <>
                   <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                    {levelParkingData?.level}
                     <ParkingDataCard
                       levelParkingData={levelParkingData}
                       imagepath={floorImagePath?.[levelParkingData?.level]}
                     />
+                  </Grid>
+                </>
+              ))}
+
+              {props?.parkingLevelOccupancy?.length === 1 && (
+                <Grid item md={6} xs={12}>
+                  <ParkingDataCard
+                    levelParkingData={emptyParkingData}
+                    imagepath={floorImagePath?.['B2']}
+                  />
+                </Grid>
+              )}
+            </Grid>
+          </Card>
+        </Grid>
+
+        <Grid item lg={4} md={12} xs={12}>
+          <Card
+            sx={{
+              height: '100%',
+            }}
+          >
+            <CardContent sx={{ padding: '4px 9px' }}>
+              <Typography variant='h6' m={0} align='left'>
+                {' '}
+                Download report
+              </Typography>
+              <ReportForm />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item lg={8} md={12} xs={12}>
+          <Card
+            sx={{
+              height: '100%',
+              paddingBottom: '18px',
+              marginBottom: '2rem',
+              textAlign: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography variant='h6' align='left' ml={2} mt={1}>
+              {' '}
+              Parking Occupancy (Level-wise)
+            </Typography>
+
+            <Grid container m={0.2} spacing={3} pt={2} align='left'>
+              {props?.parkingLevelOccupancy?.map((levelParkingData) => (
+                <>
+                  <Grid item md={6} xs={12} key={levelParkingData?.level}>
+                    <ParkingDataCard />
                   </Grid>
                 </>
               ))}

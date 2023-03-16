@@ -23,32 +23,46 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
         marginRight: '2rem',
       }}
     >
-      <CardContent>
-        <Typography gutterBottom variant='subtitle1' component='div'>
-          Parking Level- {levelParkingData?.level}
-        </Typography>
-        <DonutChart
-          occupied={levelParkingData?.occupied || 0}
-          vacant={levelParkingData?.vacant || 0}
-          height={180}
-        />
-
-        <Typography gutterBottom variant='body1' component='div'>
-          To view the map of <b>{levelParkingData?.level} </b>parking level
-          click on the button below
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          onClick={() =>
-            openMap(levelParkingData?.level?.toLowerCase(), imagepath)
-          }
-          variant='contained'
-          size='small'
-        >
-          Open Map
-        </Button>
-      </CardActions>
+      {levelParkingData ? (
+        <>
+          <CardContent>
+            <Typography gutterBottom variant='subtitle1' component='div'>
+              Parking Level- {levelParkingData?.level}
+            </Typography>
+            <DonutChart
+              occupied={levelParkingData?.occupied || 0}
+              vacant={levelParkingData?.vacant || 0}
+              height={180}
+            />
+          </CardContent>
+          <CardActions>
+            <Button
+              onClick={() =>
+                openMap(levelParkingData?.level?.toLowerCase(), imagepath)
+              }
+              variant='contained'
+              size='small'
+            >
+              Open Map
+            </Button>
+          </CardActions>
+        </>
+      ) : (
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant='h5'
+            component='div'
+            sx={{
+              height: '15rem',
+              textAlign: 'center',
+              paddingTop: '7.5rem',
+            }}
+          >
+            Coming Soon
+          </Typography>
+        </CardContent>
+      )}
     </Card>
   );
 };
