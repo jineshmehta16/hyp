@@ -14,7 +14,7 @@ import styles from './styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { manageToast } from '../../store/common/actions';
+import { manageToast, setOverlayStatus } from '../../store/common/actions';
 
 const Login = (props) => {
   const { classes } = props;
@@ -49,6 +49,7 @@ const Login = (props) => {
             type: 'error',
           };
           dispatch(manageToast(obj));
+          dispatch(setOverlayStatus(false));
         }
       })
       .catch((error) => {

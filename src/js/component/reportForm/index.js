@@ -12,8 +12,15 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import DownloadIcon from '@mui/icons-material/Download';
+import { withStyles } from '@mui/styles';
+import styles from './styles';
+import { post } from '../../axiosUtils/appUtils';
+import { useDispatch } from 'react-redux';
+import { manageToast, setOverlayStatus } from '../../store/common/actions';
 
-const ReportForm = () => {
+const ReportForm = (props) => {
+  const { classes } = props;
+  const dispatch = useDispatch();
   const [reportFormat, setReportFormat] = useState('daily');
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -57,20 +64,25 @@ const ReportForm = () => {
       selectedYear,
       selectedMonth,
     };
-
     console.log('formData', formData);
+
+    //TODO- replace with actual endpoint
+
+    // post('url', formData)
+    //   .then((res) => {})
+    //   .catch((error) => {
+    //     const obj = {
+    //       title: 'error',
+    //       message: error.message,
+    //       status: true,
+    //       type: 'error',
+    //     };
+    //     dispatch(manageToast(obj));
+    //     dispatch(setOverlayStatus(false));
+    //   });
   };
   return (
-    <form
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '60%',
-        marginLeft: '2rem',
-        marginTop: '2rem',
-      }}
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit} className={classes.root}>
       <FormControl sx={{ marginBottom: '10px' }}>
         <FormLabel id='demo-controlled-radio-buttons-group'>
           Pick the format of report:{' '}
@@ -153,4 +165,4 @@ const ReportForm = () => {
   );
 };
 
-export default ReportForm;
+export default withStyles(styles)(ReportForm);
