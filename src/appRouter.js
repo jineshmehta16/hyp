@@ -6,12 +6,11 @@ import Footer from './js/component/footer';
 import Header from './js/component/header';
 import { getToast, getOverlay } from './js/store/common/selectors';
 import LoadingOverlay from './js/common/overlay';
-import GlobalStyles from './js/hooks/globalStyles';
 import SplashScreen from './js/component/splashScreen';
-import ParkingMap from './js/component/parkingMap';
 
 const Home = lazy(() => import('./js/container/home'));
 const Login = lazy(() => import('./js/container/login'));
+const ParkingMap = lazy(() => import('./js/component/parkingMap'));
 
 const AppRouter = (props) => {
   const { toast, overlay } = props;
@@ -22,7 +21,6 @@ const AppRouter = (props) => {
       element: (
         <>
           {toast?.status && <Toast />}
-          {<GlobalStyles />}
           {overlay && <LoadingOverlay />}
           {true && <Header />}
           <Outlet />

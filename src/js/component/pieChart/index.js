@@ -2,6 +2,7 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import { parkingStatus } from '../../data/constants';
 
 export default function PieChart({ occupied, vacant, height }) {
   const theme = useTheme();
@@ -10,7 +11,7 @@ export default function PieChart({ occupied, vacant, height }) {
       type: 'pie',
     },
     colors: [theme?.status?.occupied, theme?.status?.vacant],
-    labels: ['occupied', 'vacant'],
+    labels: [parkingStatus?.OCCUPIED, parkingStatus?.VACANT],
     legend: {
       fontSize: '18px',
     },

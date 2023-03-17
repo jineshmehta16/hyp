@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Chart from 'react-apexcharts';
+import { parkingStatus } from '../../data/constants';
 
 export default function DonutChart({ occupied, vacant, height }) {
   const theme = useTheme();
@@ -9,7 +10,7 @@ export default function DonutChart({ occupied, vacant, height }) {
       foreColor: theme?.palette?.primary?.main,
     },
     colors: [theme?.status?.occupied, theme?.status?.vacant],
-    labels: ['occupied', 'vacant'],
+    labels: [parkingStatus?.OCCUPIED, parkingStatus?.VACANT],
     legend: {
       fontSize: '16px',
     },

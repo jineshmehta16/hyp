@@ -9,6 +9,12 @@ import ReportForm from '../../component/reportForm';
 import ParkingDataCard from '../../component/parkingDataCard';
 import b1Map from '../../../assets/images/lowerbasement.png';
 import b2Map from '../../../assets/images/upperbasement.png';
+import {
+  totalParkingCardTitle,
+  levelwiseParkingCardTitle,
+  downloadReportTitle,
+  currentUtilization,
+} from '../../data/constants';
 
 const floorImagePath = {
   LB1: b1Map,
@@ -34,7 +40,7 @@ const OccupancyLayout = (props) => {
             <CardContent sx={{ padding: '4px 9px' }}>
               <Typography variant='h6' m={0} align='left'>
                 {' '}
-                Car Parking Occupancy (Total){' '}
+                {totalParkingCardTitle}
               </Typography>
               <PieChart
                 occupied={props?.occupied || 0}
@@ -43,7 +49,7 @@ const OccupancyLayout = (props) => {
               />
 
               <Typography variant='body1' m={5}>
-                Current Utilization:{' '}
+                {currentUtilization} :
                 <b>{props?.currentUtilizationInPercentage}%</b>
               </Typography>
             </CardContent>
@@ -60,8 +66,7 @@ const OccupancyLayout = (props) => {
             }}
           >
             <Typography variant='h6' align='left' ml={2} mt={1}>
-              {' '}
-              Parking Occupancy (Level-wise)
+              {levelwiseParkingCardTitle}
             </Typography>
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
@@ -69,6 +74,7 @@ const OccupancyLayout = (props) => {
                 <>
                   <Grid item md={6} xs={12} key={levelParkingData?.level}>
                     <ParkingDataCard
+                      key={levelParkingData?.level}
                       levelParkingData={levelParkingData}
                       imagepath={floorImagePath?.[levelParkingData?.level]}
                     />
@@ -96,8 +102,7 @@ const OccupancyLayout = (props) => {
           >
             <CardContent sx={{ padding: '4px 9px' }}>
               <Typography variant='h6' m={0} align='left'>
-                {' '}
-                Download report
+                {downloadReportTitle}
               </Typography>
               <ReportForm />
             </CardContent>
@@ -116,14 +121,14 @@ const OccupancyLayout = (props) => {
           >
             <Typography variant='h6' align='left' ml={2} mt={1}>
               {' '}
-              Parking Occupancy (Level-wise)
+              {levelwiseParkingCardTitle}
             </Typography>
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
                 <>
                   <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                    <ParkingDataCard />
+                    <ParkingDataCard key={levelParkingData?.level} />
                   </Grid>
                 </>
               ))}

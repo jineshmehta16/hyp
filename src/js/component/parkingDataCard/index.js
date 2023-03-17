@@ -6,6 +6,10 @@ import Typography from '@mui/material/Typography';
 import DonutChart from '../../component/donutChart';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import {
+  comingSoonCardTitle,
+  parkingLevelSubtitle,
+} from '../../data/constants';
 
 const ParkingDataCard = ({ levelParkingData, imagepath }) => {
   const navigate = useNavigate();
@@ -27,7 +31,7 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
         <>
           <CardContent>
             <Typography gutterBottom variant='subtitle1' component='div'>
-              Parking Level- {levelParkingData?.level}
+              {parkingLevelSubtitle} - {levelParkingData?.level}
             </Typography>
             <DonutChart
               occupied={levelParkingData?.occupied || 0}
@@ -59,7 +63,7 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
               paddingTop: '7.5rem',
             }}
           >
-            Coming Soon
+            {comingSoonCardTitle}
           </Typography>
         </CardContent>
       )}

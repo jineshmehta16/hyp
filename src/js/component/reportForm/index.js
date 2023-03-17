@@ -17,11 +17,16 @@ import styles from './styles';
 import { post } from '../../axiosUtils/appUtils';
 import { useDispatch } from 'react-redux';
 import { manageToast, setOverlayStatus } from '../../store/common/actions';
+import {
+  reportFormatType,
+  buttonLabel,
+  pickReportFormatLabel,
+} from '../../data/constants';
 
 const ReportForm = (props) => {
   const { classes } = props;
   const dispatch = useDispatch();
-  const [reportFormat, setReportFormat] = useState('daily');
+  const [reportFormat, setReportFormat] = useState(reportFormatType.DAILY);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -85,7 +90,7 @@ const ReportForm = (props) => {
     <form onSubmit={handleSubmit} className={classes.root}>
       <FormControl sx={{ marginBottom: '10px' }}>
         <FormLabel id='demo-controlled-radio-buttons-group'>
-          Pick the format of report:{' '}
+          {pickReportFormatLabel}:
         </FormLabel>
         <RadioGroup
           aria-labelledby='demo-controlled-radio-buttons-group'
@@ -93,15 +98,19 @@ const ReportForm = (props) => {
           value={reportFormat}
           onChange={(e) => setReportFormat(e.target.value)}
         >
-          <FormControlLabel value='daily' control={<Radio />} label='Daily' />
           <FormControlLabel
-            value='monthly'
+            value={reportFormatType.DAILY}
+            control={<Radio />}
+            label='Daily'
+          />
+          <FormControlLabel
+            value={reportFormatType.MONTHLY}
             control={<Radio />}
             label='Monthly'
           />
         </RadioGroup>
       </FormControl>
-      {reportFormat === 'daily' && (
+      {reportFormat === reportFormatType.DAILY && (
         <>
           <FormControl sx={{ marginBottom: '10px', width: '100%' }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -116,11 +125,11 @@ const ReportForm = (props) => {
         </>
       )}
 
-      {reportFormat === 'monthly' && (
+      {reportFormat === reportFormatType.MONTHLY && (
         <>
           <FormControl
             sx={{ marginBottom: '10px' }}
-            required={reportFormat === 'monthly'}
+            required={reportFormat === reportFormatType.MONTHLY}
           >
             <InputLabel id='demo-simple-select-label'>Month</InputLabel>
             <Select
@@ -131,7 +140,9 @@ const ReportForm = (props) => {
               onChange={(e) => setSelectedMonth(e.target.value)}
             >
               {months?.map((month) => (
-                <MenuItem value={month}>{month}</MenuItem>
+                <MenuItem value={month} key={month}>
+                  {month}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -139,7 +150,7 @@ const ReportForm = (props) => {
           <FormControl
             fullWidth
             sx={{ marginBottom: '10px' }}
-            required={reportFormat === 'monthly'}
+            required={reportFormat === reportFormatType.MONTHLY}
           >
             <InputLabel id='demo-simple-select-label'>Year</InputLabel>
             <Select
@@ -150,15 +161,16 @@ const ReportForm = (props) => {
               onChange={(e) => setSelectedYear(e.target.value)}
             >
               {years?.map((year) => (
-                <MenuItem value={year}>{year}</MenuItem>
+                <MenuItem value={year} key={year}>
+                  {year}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
         </>
       )}
       <Button variant='contained' type='submit'>
-        {' '}
-        Download
+        {buttonLabel.DOWNLOAD}
         <DownloadIcon />
       </Button>
     </form>

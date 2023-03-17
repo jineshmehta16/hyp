@@ -20,6 +20,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { getRefreshedPageData } from '../../store/common/selectors';
+import { headerTitle, buttonLabel } from '../../data/constants';
 
 const drawerWidth = 240;
 
@@ -42,7 +43,7 @@ const Header = (props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant='h6' sx={{ my: 2 }}>
-        HyP Parking Management Dashboard
+        {headerTitle}
       </Typography>
       <Divider />
       {sessionStorage.getItem('emailId') && (
@@ -53,14 +54,13 @@ const Header = (props) => {
             onClick={() => {
               dispatch(refreshPageData(!refreshFlag));
             }}
-            primary='Refresh'
           >
             <ListItemAvatar>
               <Avatar>
                 <RefreshIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary='Refresh' />
+            <ListItemText primary={buttonLabel.REFRESH} />
           </ListItem>
 
           <ListItem onClick={logout}>
@@ -69,7 +69,7 @@ const Header = (props) => {
                 <LogoutIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary='Logout' />
+            <ListItemText primary={buttonLabel.LOGOUT} />
           </ListItem>
         </List>
       )}
@@ -93,7 +93,7 @@ const Header = (props) => {
             </IconButton>
           )}
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            HyP Parking Management Dashboard
+            {headerTitle}
           </Typography>
           {sessionStorage.getItem('emailId') && (
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -108,8 +108,7 @@ const Header = (props) => {
                   dispatch(refreshPageData(!refreshFlag));
                 }}
               >
-                {' '}
-                Refresh
+                {buttonLabel.REFRESH}
                 <RefreshIcon />
               </Button>
               <Button
@@ -121,8 +120,7 @@ const Header = (props) => {
                 }}
                 onClick={logout}
               >
-                {' '}
-                Logout
+                {buttonLabel.LOGOUT}
                 <LogoutIcon />
               </Button>
             </Box>

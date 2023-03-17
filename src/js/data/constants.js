@@ -1,0 +1,27 @@
+export const reportFormatType = {
+  DAILY: 'daily',
+  MONTHLY: 'monthly',
+};
+
+export const parkingStatus = {
+  OCCUPIED: 'occupied',
+  VACANT: 'vacant',
+};
+
+export const buttonLabel = {
+  OPEN_MAP: 'Open Map',
+  DOWNLOAD: 'Download',
+  REFRESH: 'Refresh',
+  LOGOUT: 'Logout',
+};
+
+export const headerTitle = 'HyP Parking Management Dashboard';
+export const totalParkingCardTitle = 'Car Parking Occupancy (Total)';
+export const levelwiseParkingCardTitle = 'Parking Occupancy (Level-wise)';
+export const downloadReportTitle = 'Download report';
+export const footerText =
+  'HyP- Host your parking ©2023 Techprom IoT Solutions Pvt Ltd';
+export const comingSoonCardTitle = 'Coming Soon';
+export const parkingLevelSubtitle = 'Parking Level';
+export const currentUtilization = 'Current Utilization';
+export const pickReportFormatLabel = 'Pick the format of report:';
