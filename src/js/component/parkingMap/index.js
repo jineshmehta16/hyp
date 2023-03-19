@@ -19,7 +19,7 @@ const ParkingMap = (props) => {
       setDataset(response?.data);
     });
 
-    get('/map').then((res) => {
+    get('/parking/map').then((res) => {
       res?.data?.data?.sensors && setParkingStatus(res?.data?.data?.sensors);
     });
   }, [refreshFlag]);

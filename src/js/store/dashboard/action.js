@@ -12,7 +12,7 @@ export const setOverallParkingDetails = (data) => {
 export const getOverallParkingInformation = () => {
   return (dispatch) => {
     dispatch(setOverlayStatus(true));
-    return get('/occupancy')
+    return get('/parking/occupancy')
       .then((response) => {
         if (response?.data?.status?.toUpperCase() === 'SUCCESS') {
           dispatch(setOverallParkingDetails(response?.data?.data));

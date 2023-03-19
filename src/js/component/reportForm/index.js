@@ -17,6 +17,8 @@ import styles from './styles';
 import { post } from '../../axiosUtils/appUtils';
 import { useDispatch } from 'react-redux';
 import { manageToast, setOverlayStatus } from '../../store/common/actions';
+import dayjs from 'dayjs';
+
 import {
   reportFormatType,
   buttonLabel,
@@ -63,35 +65,46 @@ const ReportForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      reportFormat,
-      selectedDate,
-      selectedYear,
-      selectedMonth,
-    };
-    console.log('formData', formData);
 
-    //TODO- replace with actual endpoint
+    const formData =
+      reportFormat === reportFormatType.DAILY
+        ? {
+            dailyReportDate: dayjs(selectedDate, 'YYYY-MM-DD+h:mm').format(
+              'YYYY-MM-DD'
+            ),
+          }
+        : {
+            selectedMonth,
+            selectedYear,
+          };
 
-    // post('url', formData)
-    //   .then((res) => {})
-    //   .catch((error) => {
-    //     const obj = {
-    //       title: 'error',
-    //       message: error.message,
-    //       status: true,
-    //       type: 'error',
-    //     };
-    //     dispatch(manageToast(obj));
-    //     dispatch(setOverlayStatus(false));
-    //   });
+    post('/report/daily', formData)
+      .then(function (response) {
+        const href = `http://sanralpharma.com/${response}`;
+        const link = document.createElement('a');
+        link.href = href;
+        link.setAttribute('target', '_blank');
+        link.setAttribute('download', 'dailyReport');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
+      })
+      .catch((error) => {
+        const obj = {
+          title: 'error',
+          message: error.message,
+          status: true,
+          type: 'error',
+        };
+        dispatch(manageToast(obj));
+        dispatch(setOverlayStatus(false));
+      });
   };
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
       <FormControl sx={{ marginBottom: '10px' }}>
-        <FormLabel id='demo-controlled-radio-buttons-group'>
-          {pickReportFormatLabel}:
-        </FormLabel>
+        <FormLabel>{pickReportFormatLabel}:</FormLabel>
         <RadioGroup
           aria-labelledby='demo-controlled-radio-buttons-group'
           name='controlled-radio-buttons-group'
@@ -116,6 +129,7 @@ const ReportForm = (props) => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label='Pick date'
+                inputFormat='DD-MM-YYYY'
                 value={selectedDate}
                 onChange={(newValue) => setSelectedDate(newValue)}
                 disableFuture={true}
@@ -131,10 +145,8 @@ const ReportForm = (props) => {
             sx={{ marginBottom: '10px' }}
             required={reportFormat === reportFormatType.MONTHLY}
           >
-            <InputLabel id='demo-simple-select-label'>Month</InputLabel>
+            <InputLabel>Month</InputLabel>
             <Select
-              labelId='demo-simple-select-label'
-              id='demo-simple-select'
               value={selectedMonth}
               label='Month'
               onChange={(e) => setSelectedMonth(e.target.value)}
@@ -152,10 +164,8 @@ const ReportForm = (props) => {
             sx={{ marginBottom: '10px' }}
             required={reportFormat === reportFormatType.MONTHLY}
           >
-            <InputLabel id='demo-simple-select-label'>Year</InputLabel>
+            <InputLabel>Year</InputLabel>
             <Select
-              labelId='demo-simple-select-label'
-              id='demo-simple-select'
               value={selectedYear}
               label='Year'
               onChange={(e) => setSelectedYear(e.target.value)}
