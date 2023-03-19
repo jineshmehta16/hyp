@@ -15,7 +15,9 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
   const navigate = useNavigate();
 
   const openMap = (level, image) => {
-    navigate(`/parkingMap/${level}`, { state: { imagePath: image } });
+    navigate(`/parkingMap/${level}`, {
+      state: { imagePath: image, level: level },
+    });
   };
 
   return (
@@ -42,7 +44,11 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
           <CardActions>
             <Button
               onClick={() =>
-                openMap(levelParkingData?.level?.toLowerCase(), imagepath)
+                openMap(
+                  levelParkingData?.level?.toLowerCase(),
+                  imagepath,
+                  levelParkingData?.level
+                )
               }
               variant='contained'
               size='small'

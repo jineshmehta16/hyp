@@ -16,9 +16,11 @@ const ParkingMap = (props) => {
 
   useEffect(() => {
     axios.get('/db/parkingMapData.json').then((response) => {
-      setDataset(response?.data);
+      state?.level && setDataset(response?.data?.[state?.level.toUpperCase()]);
     });
+  }, []);
 
+  useEffect(() => {
     get('/parking/map').then((res) => {
       res?.data?.data?.sensors && setParkingStatus(res?.data?.data?.sensors);
     });

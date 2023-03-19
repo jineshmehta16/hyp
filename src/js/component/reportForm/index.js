@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import React, { useState, useCallback } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -18,11 +15,13 @@ import { post } from '../../axiosUtils/appUtils';
 import { useDispatch } from 'react-redux';
 import { manageToast, setOverlayStatus } from '../../store/common/actions';
 import dayjs from 'dayjs';
-
+import DateSelector from '../dateSelector';
 import {
   reportFormatType,
   buttonLabel,
   pickReportFormatLabel,
+  years,
+  months,
 } from '../../data/constants';
 
 const ReportForm = (props) => {
@@ -33,35 +32,12 @@ const ReportForm = (props) => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
 
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const years = [
-    '2023',
-    '2022',
-    '2021',
-    '2020',
-    '2019',
-    '2018',
-    '2017',
-    '2016',
-    '2015',
-    '2014',
-    '2013',
-    '2012',
-  ];
+  const resetForm = useCallback(() => {
+    setReportFormat(reportFormatType.DAILY);
+    setSelectedDate(null);
+    setSelectedMonth('');
+    setSelectedYear('');
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,6 +65,8 @@ const ReportForm = (props) => {
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(href);
+
+        resetForm();
       })
       .catch((error) => {
         const obj = {
@@ -101,6 +79,7 @@ const ReportForm = (props) => {
         dispatch(setOverlayStatus(false));
       });
   };
+
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
       <FormControl sx={{ marginBottom: '10px' }}>
@@ -123,23 +102,14 @@ const ReportForm = (props) => {
           />
         </RadioGroup>
       </FormControl>
-      {reportFormat === reportFormatType.DAILY && (
+      {reportFormat === reportFormatType.DAILY ? (
         <>
-          <FormControl sx={{ marginBottom: '10px', width: '100%' }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label='Pick date'
-                inputFormat='DD-MM-YYYY'
-                value={selectedDate}
-                onChange={(newValue) => setSelectedDate(newValue)}
-                disableFuture={true}
-              />
-            </LocalizationProvider>
-          </FormControl>
+          <DateSelector
+            setNewDate={setSelectedDate}
+            updatedDate={selectedDate}
+          />
         </>
-      )}
-
-      {reportFormat === reportFormatType.MONTHLY && (
+      ) : (
         <>
           <FormControl
             sx={{ marginBottom: '10px' }}
@@ -179,6 +149,7 @@ const ReportForm = (props) => {
           </FormControl>
         </>
       )}
+
       <Button variant='contained' type='submit'>
         {buttonLabel.DOWNLOAD}
         <DownloadIcon />
