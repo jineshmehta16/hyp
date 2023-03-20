@@ -50,17 +50,22 @@ const ReportForm = (props) => {
             ),
           }
         : {
-            selectedMonth,
-            selectedYear,
+            reportMonth: selectedMonth,
+            reportYear: selectedYear,
           };
 
-    post('/report/daily', formData)
+    const reportUrl =
+      reportFormat === reportFormatType.DAILY
+        ? '/report/daily'
+        : '/report/monthly';
+
+    post(reportUrl, formData)
       .then(function (response) {
         const href = `http://sanralpharma.com/${response}`;
         const link = document.createElement('a');
         link.href = href;
         link.setAttribute('target', '_blank');
-        link.setAttribute('download', 'dailyReport');
+        link.setAttribute('download', 'Report');
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
