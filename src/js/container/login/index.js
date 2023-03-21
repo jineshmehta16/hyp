@@ -102,6 +102,7 @@ const Login = (props) => {
 
               <Grid item>
                 <TextField
+                  type='password'
                   label='Password'
                   variant='standard'
                   sx={{ m: 1, width: '35ch' }}

@@ -110,6 +110,7 @@ const ResetPassword = (props) => {
               <Grid item>
                 <TextField
                   label='old Password'
+                  type='password'
                   variant='standard'
                   sx={{ m: 1, width: '35ch' }}
                   required
@@ -133,6 +134,7 @@ const ResetPassword = (props) => {
               <Grid item>
                 <TextField
                   label='New Password'
+                  type='password'
                   variant='standard'
                   sx={{ m: 1, width: '35ch' }}
                   required
