@@ -10,6 +10,7 @@ import SplashScreen from './js/component/splashScreen';
 
 const Home = lazy(() => import('./js/container/home'));
 const Login = lazy(() => import('./js/container/login'));
+const ResetPassword = lazy(() => import('./js/container/resetPassword'));
 const ParkingMap = lazy(() => import('./js/component/parkingMap'));
 
 const AppRouter = (props) => {
@@ -36,6 +37,10 @@ const AppRouter = (props) => {
         {
           path: '/login',
           element: <Login />,
+        },
+        {
+          path: '/resetPassword',
+          element: <ResetPassword />,
         },
       ],
     },

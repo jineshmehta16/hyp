@@ -5,7 +5,7 @@ import handleError from './handleError';
 const baseUrl = `${APP_CONFIG.API_URL}`;
 
 function getAccessToken() {
-  return localStorage.getItem('accessToken');
+  return sessionStorage.getItem('token');
 }
 
 export const getHeaders = () => {
@@ -14,8 +14,16 @@ export const getHeaders = () => {
       Accept: 'application/json',
       'content-Type': 'application/json',
       ...(getAccessToken() && {
-        authorization: `Bearer ${getAccessToken()}`,
+        token: `${getAccessToken()}`,
       }),
+    },
+  };
+};
+
+export const getHeadersLogin = () => {
+  return {
+    headers: {
+      token: `login`,
     },
   };
 };
@@ -39,6 +47,19 @@ export const post = (path, data) => {
       .post(`${baseUrl}${path}`, data, getHeaders())
       .then((response) => {
         resolve(response?.data?.data);
+      })
+      .catch((error) => {
+        reject(handleError(error));
+      });
+  });
+};
+
+export const postLogin = (path, data) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${baseUrl}${path}`, data, getHeadersLogin())
+      .then((response) => {
+        resolve(response?.data);
       })
       .catch((error) => {
         reject(handleError(error));

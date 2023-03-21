@@ -46,7 +46,7 @@ const Header = (props) => {
         {headerTitle}
       </Typography>
       <Divider />
-      {sessionStorage.getItem('emailId') && (
+      {sessionStorage.getItem('token') && (
         <List
           sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
@@ -81,7 +81,7 @@ const Header = (props) => {
       <CssBaseline />
       <AppBar component='nav'>
         <Toolbar>
-          {sessionStorage.getItem('emailId') && (
+          {sessionStorage.getItem('token') && (
             <IconButton
               color='inherit'
               aria-label='open drawer'
@@ -95,7 +95,7 @@ const Header = (props) => {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             {headerTitle}
           </Typography>
-          {sessionStorage.getItem('emailId') && (
+          {sessionStorage.getItem('token') && (
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               <Button
                 variant='outlined'
@@ -127,7 +127,7 @@ const Header = (props) => {
           )}
         </Toolbar>
       </AppBar>
-      {sessionStorage.getItem('emailId') && (
+      {sessionStorage.getItem('token') && (
         <Box component='nav'>
           <Drawer
             variant='temporary'
