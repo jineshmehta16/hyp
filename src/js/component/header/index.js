@@ -33,7 +33,7 @@ const Header = (props) => {
 
   const logout = () => {
     sessionStorage.clear();
-    navigate('/login');
+    navigate('/');
   };
 
   const handleDrawerToggle = () => {

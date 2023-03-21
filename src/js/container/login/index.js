@@ -40,7 +40,7 @@ const Login = (props) => {
         if (res?.value) {
           sessionStorage.setItem('token', res?.value);
           sessionStorage.setItem('username', loggedinUserInfo.username);
-          navigate('/');
+          navigate('/dashboard');
         } else {
           const obj = {
             title: 'error',

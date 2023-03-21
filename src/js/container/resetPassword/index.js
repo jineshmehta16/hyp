@@ -47,7 +47,7 @@ const ResetPassword = (props) => {
             type: 'success',
           };
           dispatch(manageToast(obj));
-          navigate('/login');
+          navigate('/');
         } else {
           const obj = {
             title: 'error',

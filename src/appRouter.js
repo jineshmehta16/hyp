@@ -29,14 +29,14 @@ const AppRouter = (props) => {
         </>
       ),
       children: [
-        { path: '/', element: <Home /> },
+        { path: '/', element: <Login /> },
         {
           path: 'parkingMap/:level',
           element: <ParkingMap />,
         },
         {
-          path: '/login',
-          element: <Login />,
+          path: '/dashboard',
+          element: <Home />,
         },
         {
           path: '/resetPassword',

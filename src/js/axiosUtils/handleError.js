@@ -1,6 +1,6 @@
 export const cleanUpAndSignOut = () => {
   localStorage.clear();
-  window.location.href = '/login';
+  window.location.href = '/';
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
