@@ -13,7 +13,7 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { manageToast, setOverlayStatus } from '../../store/common/actions';
+import { manageToast, setOverlayStatus,headerItemsToggle } from '../../store/common/actions';
 import { postLogin } from '../../axiosUtils/appUtils';
 
 const ResetPassword = (props) => {
@@ -31,8 +31,8 @@ const ResetPassword = (props) => {
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(initialState);
 
   useEffect(() => {
-    sessionStorage.clear();
-  });
+    dispatch(headerItemsToggle({show_all:false}))
+  },[]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();

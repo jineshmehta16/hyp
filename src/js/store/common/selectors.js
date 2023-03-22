@@ -50,3 +50,10 @@ export const getRefreshedPageData = createSelector(
     return CommonReducer?.refreshPageData;
   }
 );
+
+export const headerItemToggle = createSelector(
+  [CommonReducerSelector],
+  (CommonReducer) => {
+    return CommonReducer?.header;
+  }
+);

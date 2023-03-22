@@ -5,7 +5,7 @@ import handleError from './handleError';
 const baseUrl = `${APP_CONFIG.API_URL}`;
 
 function getAccessToken() {
-  return sessionStorage.getItem('token');
+  return localStorage.getItem('token');
 }
 
 export const getHeaders = () => {

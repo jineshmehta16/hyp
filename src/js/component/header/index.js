@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import { getRefreshedPageData } from '../../store/common/selectors';
+import { getRefreshedPageData, headerItemToggle } from '../../store/common/selectors';
 import { headerTitle, buttonLabel } from '../../data/constants';
 
 const drawerWidth = 240;
@@ -30,9 +30,11 @@ const Header = (props) => {
   const navigate = useNavigate();
 
   const refreshFlag = useSelector((state) => getRefreshedPageData(state));
+  const headeritemToggle = useSelector(state=>headerItemToggle(state))
+ 
 
   const logout = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     navigate('/');
   };
 
@@ -46,7 +48,7 @@ const Header = (props) => {
         {headerTitle}
       </Typography>
       <Divider />
-      {sessionStorage.getItem('token') && (
+      {headeritemToggle?.show_all  && (
         <List
           sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
@@ -81,7 +83,7 @@ const Header = (props) => {
       <CssBaseline />
       <AppBar component='nav'>
         <Toolbar>
-          {sessionStorage.getItem('token') && (
+          {headeritemToggle?.show_all && (
             <IconButton
               color='inherit'
               aria-label='open drawer'
@@ -95,7 +97,7 @@ const Header = (props) => {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             {headerTitle}
           </Typography>
-          {sessionStorage.getItem('token') && (
+          {headeritemToggle?.show_all && (
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               <Button
                 variant='outlined'
@@ -127,7 +129,7 @@ const Header = (props) => {
           )}
         </Toolbar>
       </AppBar>
-      {sessionStorage.getItem('token') && (
+      {headeritemToggle?.show_all && (
         <Box component='nav'>
           <Drawer
             variant='temporary'

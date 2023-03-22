@@ -13,7 +13,7 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { manageToast, setOverlayStatus } from '../../store/common/actions';
+import { manageToast, setOverlayStatus,headerItemsToggle } from '../../store/common/actions';
 import { postLogin } from '../../axiosUtils/appUtils';
 
 const Login = (props) => {
@@ -29,8 +29,8 @@ const Login = (props) => {
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(initialState);
 
   useEffect(() => {
-    sessionStorage.clear();
-  });
+    dispatch(headerItemsToggle({show_all:false}))
+  },[]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -38,8 +38,8 @@ const Login = (props) => {
     postLogin('/auth/signin', loggedinUserInfo)
       .then(function (res) {
         if (res?.value) {
-          sessionStorage.setItem('token', res?.value);
-          sessionStorage.setItem('username', loggedinUserInfo.username);
+          localStorage.setItem('token', res?.value);
+          localStorage.setItem('username', loggedinUserInfo.username);
           navigate('/dashboard');
         } else {
           const obj = {
