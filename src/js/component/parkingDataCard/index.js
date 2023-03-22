@@ -40,8 +40,13 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
               vacant={levelParkingData?.vacant || 0}
               height={180}
             />
+
+            <Typography variant='span'>
+              Available Parkings:
+              <b>{levelParkingData?.vacant || 0}</b>
+            </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions sx={{ marginTop: '-10px' }}>
             <Button
               onClick={() =>
                 openMap(

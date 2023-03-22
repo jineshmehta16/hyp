@@ -47,8 +47,12 @@ const OccupancyLayout = (props) => {
                 vacant={props?.vacant || 0}
                 height={250}
               />
+              <Typography variant='span'>
+                Available Parkings:
+                <b>{props?.vacant || 0}</b>
+              </Typography>
 
-              <Typography variant='body1' m={5}>
+              <Typography variant='body1'>
                 {currentUtilization} :
                 <b>{props?.currentUtilizationInPercentage}%</b>
               </Typography>
