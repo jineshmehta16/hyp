@@ -25,6 +25,7 @@ export const comingSoonCardTitle = 'Coming Soon';
 export const parkingLevelSubtitle = 'Parking Level';
 export const currentUtilization = 'Current Utilization';
 export const pickReportFormatLabel = 'Pick the format of report';
+export const availableParkingsLabel = 'Available Parkings';
 
 export const months = [
   'January',

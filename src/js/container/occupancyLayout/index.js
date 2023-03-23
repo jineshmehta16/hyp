@@ -14,6 +14,7 @@ import {
   levelwiseParkingCardTitle,
   downloadReportTitle,
   currentUtilization,
+  availableParkingsLabel
 } from '../../data/constants';
 
 const floorImagePath = {
@@ -48,7 +49,7 @@ const OccupancyLayout = (props) => {
                 height={250}
               />
               <Typography variant='span'>
-                Available Parkings:
+                {availableParkingsLabel}:
                 <b>{props?.vacant || 0}</b>
               </Typography>
 

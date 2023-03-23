@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   comingSoonCardTitle,
   parkingLevelSubtitle,
+  availableParkingsLabel
 } from '../../data/constants';
 
 const ParkingDataCard = ({ levelParkingData, imagepath }) => {
@@ -42,7 +43,7 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
             />
 
             <Typography variant='span'>
-              Available Parkings:
+              {availableParkingsLabel}:
               <b>{levelParkingData?.vacant || 0}</b>
             </Typography>
           </CardContent>

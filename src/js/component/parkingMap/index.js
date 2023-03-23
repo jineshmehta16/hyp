@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { manageToast, setOverlayStatus } from '../../store/common/actions';
 import { getRefreshedPageData } from '../../store/common/selectors';
 import { get } from '../../axiosUtils/appUtils';
 
 const ParkingMap = (props) => {
   const { classes } = props;
+  const dispatch = useDispatch();
   const { state } = useLocation();
   const [dataSet, setDataset] = useState([]);
   const [parkingStatus, setParkingStatus] = useState({});
@@ -21,9 +23,21 @@ const ParkingMap = (props) => {
   }, []);
 
   useEffect(() => {
-    get('/parking/map').then((res) => {
+    get('/parking/map')
+    .then((res) => {
       res?.data?.data?.sensors && setParkingStatus(res?.data?.data?.sensors);
-    });
+    }) 
+    .catch((error) => {
+      console.log(error)
+        const obj = {
+          title: 'error',
+          message: error.title,
+          status: true,
+          type: 'error',
+        };
+        dispatch(manageToast(obj));
+        dispatch(setOverlayStatus(false));
+      });
   }, [refreshFlag]);
 
   return (
