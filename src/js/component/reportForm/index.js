@@ -138,7 +138,15 @@ const ReportForm = (props) => {
         )}
       </FormControl>
 
-      <Button variant='contained' type='submit'>
+      <Button
+        variant='contained'
+        type='submit'
+        disabled={
+          reportFormat === reportFormatType.DAILY
+            ? !selectedDate
+            : !selectedMonthYear
+        }
+      >
         {buttonLabel.DOWNLOAD}
         <DownloadIcon />
       </Button>
