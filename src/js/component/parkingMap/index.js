@@ -22,13 +22,24 @@ const ParkingMap = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    get('/parking/map')
-    .then((res) => {
-      res?.data?.data?.sensors && setParkingStatus(res?.data?.data?.sensors);
-    }) 
-    .catch((error) => {
-      console.log(error)
+  const getMapData = () => {
+    dispatch(setOverlayStatus(true));
+    return get('/parking/map')
+      .then((response) => {
+        if (response?.data?.status?.toUpperCase() === 'SUCCESS') {
+          response?.data?.data?.sensors && setParkingStatus(response?.data?.data?.sensors);
+        } else {
+          const obj = {
+            title: 'error',
+            message: 'Unable to fetch map data. Please check the URL.',
+            status: true,
+            type: 'error',
+          };
+          dispatch(manageToast(obj));
+        }
+        dispatch(setOverlayStatus(false));
+      })
+      .catch((error) => {
         const obj = {
           title: 'error',
           message: error.title,
@@ -38,7 +49,13 @@ const ParkingMap = (props) => {
         dispatch(manageToast(obj));
         dispatch(setOverlayStatus(false));
       });
+  
+  }
+
+  useEffect(() => {
+     getMapData();
   }, [refreshFlag]);
+
 
   return (
     <>
