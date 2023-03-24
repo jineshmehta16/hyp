@@ -13,7 +13,11 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { manageToast, setOverlayStatus,headerItemsToggle } from '../../store/common/actions';
+import {
+  manageToast,
+  setOverlayStatus,
+  headerItemsToggle,
+} from '../../store/common/actions';
 import { postLogin } from '../../axiosUtils/appUtils';
 
 const ResetPassword = (props) => {
@@ -31,8 +35,8 @@ const ResetPassword = (props) => {
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(initialState);
 
   useEffect(() => {
-    dispatch(headerItemsToggle({show_all:false}))
-  },[]);
+    dispatch(headerItemsToggle({ show_all: false }));
+  }, []);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -109,7 +113,7 @@ const ResetPassword = (props) => {
 
               <Grid item>
                 <TextField
-                  label='old Password'
+                  label='Old Password'
                   type='password'
                   variant='standard'
                   sx={{ m: 1, width: '35ch' }}

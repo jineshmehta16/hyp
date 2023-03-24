@@ -5,39 +5,42 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import DownloadIcon from '@mui/icons-material/Download';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { post } from '../../axiosUtils/appUtils';
 import { useDispatch } from 'react-redux';
 import { manageToast, setOverlayStatus } from '../../store/common/actions';
-import dayjs from 'dayjs';
 import DateSelector from '../dateSelector';
 import {
   reportFormatType,
   buttonLabel,
   pickReportFormatLabel,
-  years,
-  months,
+  pickDateLabel,
+  pickDateYearLabel,
 } from '../../data/constants';
+import dayjs from 'dayjs';
 
 const ReportForm = (props) => {
   const { classes } = props;
   const dispatch = useDispatch();
   const [reportFormat, setReportFormat] = useState(reportFormatType.DAILY);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedMonthYear, setSelectedMonthYear] = useState('');
 
   const resetForm = useCallback(() => {
     setReportFormat(reportFormatType.DAILY);
     setSelectedDate(null);
-    setSelectedMonth('');
-    setSelectedYear('');
+    setSelectedMonthYear('');
   }, []);
+
+  const getMonth = useCallback(() => {
+    const monthYearInput = new Date(selectedMonthYear);
+    const getMonthName = new Intl.DateTimeFormat('en-US', { month: 'long' })
+      .format;
+    const selectedMonth = getMonthName(monthYearInput);
+    return selectedMonth;
+  }, [selectedMonthYear]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,8 +53,8 @@ const ReportForm = (props) => {
             ),
           }
         : {
-            reportMonth: selectedMonth,
-            reportYear: selectedYear,
+            reportMonth: getMonth(),
+            reportYear: new Date(selectedMonthYear).getFullYear(),
           };
 
     const reportUrl =
@@ -93,7 +96,9 @@ const ReportForm = (props) => {
           aria-labelledby='demo-controlled-radio-buttons-group'
           name='controlled-radio-buttons-group'
           value={reportFormat}
-          onChange={(e) => setReportFormat(e.target.value)}
+          onChange={(e) => {
+            setReportFormat(e.target.value);
+          }}
         >
           <FormControlLabel
             value={reportFormatType.DAILY}
@@ -107,55 +112,33 @@ const ReportForm = (props) => {
           />
         </RadioGroup>
       </FormControl>
-      {reportFormat === reportFormatType.DAILY ? (
-        <>
-          <DateSelector
-            setNewDate={setSelectedDate}
-            updatedDate={selectedDate}
-          />
-        </>
-      ) : (
-        <>
-          <FormControl
-            sx={{ marginBottom: '10px' }}
-            required={reportFormat === reportFormatType.MONTHLY}
-          >
-            <InputLabel>Month</InputLabel>
-            <Select
-              value={selectedMonth}
-              label='Month'
-              onChange={(e) => setSelectedMonth(e.target.value)}
-            >
-              {months?.map((month) => (
-                <MenuItem value={month} key={month}>
-                  {month}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+      <FormControl sx={{ marginBottom: '10px', width: '100%' }}>
+        {reportFormat === reportFormatType.DAILY && (
+          <>
+            <DateSelector
+              setNewDate={setSelectedDate}
+              updatedDate={selectedDate}
+              label={pickDateLabel}
+              format='DD-MM-YYYY'
+              views={['year', 'month', 'day']}
+            />
+          </>
+        )}
 
-          <FormControl
-            fullWidth
-            sx={{ marginBottom: '10px' }}
-            required={reportFormat === reportFormatType.MONTHLY}
-          >
-            <InputLabel>Year</InputLabel>
-            <Select
-              value={selectedYear}
-              label='Year'
-              onChange={(e) => setSelectedYear(e.target.value)}
-            >
-              {years?.map((year) => (
-                <MenuItem value={year} key={year}>
-                  {year}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </>
-      )}
+        {reportFormat === reportFormatType.MONTHLY && (
+          <>
+            <DateSelector
+              setNewDate={setSelectedMonthYear}
+              updatedDate={selectedMonthYear}
+              label={pickDateYearLabel}
+              format='MM-YYYY'
+              views={['month', 'year']}
+            />
+          </>
+        )}
+      </FormControl>
 
-      <Button variant='contained' type='submit' disabled={reportFormat ===  reportFormatType.DAILY ? !selectedDate : (!selectedMonth || !selectedYear)}>
+      <Button variant='contained' type='submit'>
         {buttonLabel.DOWNLOAD}
         <DownloadIcon />
       </Button>
