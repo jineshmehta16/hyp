@@ -12,8 +12,7 @@ export default (error) => {
       case 500:
         obj = {
           title: 'ERROR',
-          message:
-            'There was error in processing request.Please try again later',
+          message: response?.data?.message,
           status: true,
         };
         break;

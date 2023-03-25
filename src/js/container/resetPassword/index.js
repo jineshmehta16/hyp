@@ -42,31 +42,20 @@ const ResetPassword = (props) => {
     event.preventDefault();
 
     postLogin('/auth/changePassword', loggedinUserInfo)
-      .then(function (res) {
-        if (res) {
-          const obj = {
-            title: 'success',
-            message: res?.message,
-            status: true,
-            type: 'success',
-          };
-          dispatch(manageToast(obj));
-          navigate('/');
-        } else {
-          const obj = {
-            title: 'error',
-            message: 'Something went wrong please try again later.',
-            status: true,
-            type: 'error',
-          };
-          dispatch(manageToast(obj));
-          dispatch(setOverlayStatus(false));
-        }
+      .then((res) => {
+        const obj = {
+          title: 'success',
+          message: res?.message,
+          status: true,
+          type: 'success',
+        };
+        dispatch(manageToast(obj));
+        navigate('/');
       })
       .catch((error) => {
         const obj = {
           title: 'error',
-          message: error.message,
+          message: error?.message,
           status: true,
           type: 'error',
         };

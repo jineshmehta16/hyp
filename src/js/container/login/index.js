@@ -13,7 +13,11 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { manageToast, setOverlayStatus,headerItemsToggle } from '../../store/common/actions';
+import {
+  manageToast,
+  setOverlayStatus,
+  headerItemsToggle,
+} from '../../store/common/actions';
 import { postLogin } from '../../axiosUtils/appUtils';
 
 const Login = (props) => {
@@ -29,28 +33,17 @@ const Login = (props) => {
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(initialState);
 
   useEffect(() => {
-    dispatch(headerItemsToggle({show_all:false}))
-  },[]);
+    dispatch(headerItemsToggle({ show_all: false }));
+  }, []);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
     postLogin('/auth/signin', loggedinUserInfo)
-      .then(function (res) {
-        if (res?.value) {
-          localStorage.setItem('token', res?.value);
-          localStorage.setItem('username', loggedinUserInfo.username);
-          navigate('/dashboard');
-        } else {
-          const obj = {
-            title: 'error',
-            message: 'Something went wrong please try again later.',
-            status: true,
-            type: 'error',
-          };
-          dispatch(manageToast(obj));
-          dispatch(setOverlayStatus(false));
-        }
+      .then((res) => {
+        localStorage.setItem('token', res?.value);
+        localStorage.setItem('username', loggedinUserInfo.username);
+        navigate('/dashboard');
       })
       .catch((error) => {
         const obj = {
