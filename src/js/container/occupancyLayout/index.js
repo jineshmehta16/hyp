@@ -14,7 +14,7 @@ import {
   levelwiseParkingCardTitle,
   downloadReportTitle,
   currentUtilization,
-  availableParkingsLabel
+  availableParkingsLabel,
 } from '../../data/constants';
 
 const floorImagePath = {
@@ -49,8 +49,7 @@ const OccupancyLayout = (props) => {
                 height={250}
               />
               <Typography variant='span'>
-                {availableParkingsLabel}:
-                <b>{props?.vacant || 0}</b>
+                {availableParkingsLabel}:<b>{props?.vacant || 0}</b>
               </Typography>
 
               <Typography variant='body1'>
@@ -76,15 +75,12 @@ const OccupancyLayout = (props) => {
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
               {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <>
-                  <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                    <ParkingDataCard
-                      key={levelParkingData?.level}
-                      levelParkingData={levelParkingData}
-                      imagepath={floorImagePath?.[levelParkingData?.level]}
-                    />
-                  </Grid>
-                </>
+                <Grid item md={6} xs={12} key={levelParkingData?.level}>
+                  <ParkingDataCard
+                    levelParkingData={levelParkingData}
+                    imagepath={floorImagePath?.[levelParkingData?.level]}
+                  />
+                </Grid>
               ))}
 
               {props?.parkingLevelOccupancy?.length === 1 && (
@@ -130,12 +126,10 @@ const OccupancyLayout = (props) => {
             </Typography>
 
             <Grid container m={0.2} spacing={3} pt={2} align='left'>
-              {props?.parkingLevelOccupancy?.map((levelParkingData) => (
-                <>
-                  <Grid item md={6} xs={12} key={levelParkingData?.level}>
-                    <ParkingDataCard key={levelParkingData?.level} />
-                  </Grid>
-                </>
+              {props?.parkingLevelOccupancy?.map((levelParkingData, ind) => (
+                <Grid item md={6} xs={12} key={levelParkingData?.level + ind}>
+                  <ParkingDataCard />
+                </Grid>
               ))}
 
               {props?.parkingLevelOccupancy?.length === 1 && (
