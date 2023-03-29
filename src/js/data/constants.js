@@ -13,6 +13,7 @@ export const buttonLabel = {
   DOWNLOAD: 'Download',
   REFRESH: 'Refresh',
   LOGOUT: 'Logout',
+  BACK: 'Back',
 };
 
 export const headerTitle = 'HyP Parking Management Dashboard';

@@ -17,10 +17,14 @@ import Button from '@mui/material/Button';
 import { refreshPageData } from '../../store/common/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import { getRefreshedPageData, headerItemToggle } from '../../store/common/selectors';
+import {
+  getRefreshedPageData,
+  headerItemToggle,
+} from '../../store/common/selectors';
 import { headerTitle, buttonLabel } from '../../data/constants';
+import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
 
 const drawerWidth = 240;
 
@@ -29,13 +33,19 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const isParkingMapPage = location.pathname.includes('parkingMap');
+
   const refreshFlag = useSelector((state) => getRefreshedPageData(state));
-  const headeritemToggle = useSelector(state=>headerItemToggle(state))
- 
+  const headeritemToggle = useSelector((state) => headerItemToggle(state));
 
   const logout = () => {
     localStorage.clear();
     navigate('/');
+  };
+
+  const goToDashboard = () => {
+    navigate('/dashboard');
   };
 
   const handleDrawerToggle = () => {
@@ -48,7 +58,7 @@ const Header = (props) => {
         {headerTitle}
       </Typography>
       <Divider />
-      {headeritemToggle?.show_all  && (
+      {headeritemToggle?.show_all && (
         <List
           sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
         >
@@ -73,6 +83,17 @@ const Header = (props) => {
             </ListItemAvatar>
             <ListItemText primary={buttonLabel.LOGOUT} />
           </ListItem>
+
+          {isParkingMapPage && (
+            <ListItem onClick={goToDashboard}>
+              <ListItemAvatar>
+                <Avatar>
+                  <ForwardSharpIcon sx={{ transform: 'rotate(180deg)' }} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={buttonLabel.BACK} />
+            </ListItem>
+          )}
         </List>
       )}
     </Box>
@@ -125,6 +146,19 @@ const Header = (props) => {
                 {buttonLabel.LOGOUT}
                 <LogoutIcon />
               </Button>
+              {isParkingMapPage && (
+                <Button
+                  variant='outlined'
+                  color='secondary'
+                  sx={{
+                    border: '2px solid',
+                    marginRight: '10px',
+                  }}
+                  onClick={goToDashboard}
+                >
+                  <ForwardSharpIcon sx={{ transform: 'rotate(180deg)' }} />
+                </Button>
+              )}
             </Box>
           )}
         </Toolbar>
