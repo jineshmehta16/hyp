@@ -25,6 +25,7 @@ import {
 } from '../../store/common/selectors';
 import { headerTitle, buttonLabel } from '../../data/constants';
 import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
+import GuestParkingDialog from '../guestParkingDialog';
 
 const drawerWidth = 240;
 
@@ -35,7 +36,7 @@ const Header = (props) => {
 
   const location = useLocation();
   const isParkingMapPage = location.pathname.includes('parkingMap');
-
+  const isParkingGridPage = location.pathname.includes('parkingGrid');
   const refreshFlag = useSelector((state) => getRefreshedPageData(state));
   const headeritemToggle = useSelector((state) => headerItemToggle(state));
 
@@ -53,7 +54,10 @@ const Header = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: 'center', marginBottom: '10vh' }}
+    >
       <Typography variant='h6' sx={{ my: 2 }}>
         {headerTitle}
       </Typography>
@@ -119,7 +123,11 @@ const Header = (props) => {
             {headerTitle}
           </Typography>
           {headeritemToggle?.show_all && (
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Box
+              sx={{
+                display: { xs: 'none', sm: 'contents' },
+              }}
+            >
               <Button
                 variant='outlined'
                 color='secondary'
@@ -159,6 +167,8 @@ const Header = (props) => {
                   <ForwardSharpIcon sx={{ transform: 'rotate(180deg)' }} />
                 </Button>
               )}
+
+              {isParkingGridPage && <GuestParkingDialog />}
             </Box>
           )}
         </Toolbar>
