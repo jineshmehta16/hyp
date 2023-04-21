@@ -11,7 +11,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import InputAdornment from '@mui/material/InputAdornment';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
   manageToast,
@@ -20,14 +20,16 @@ import {
 } from '../../store/common/actions';
 import { postLogin } from '../../axiosUtils/appUtils';
 
-const Login = (props) => {
+const ResetPassword = (props) => {
   const { classes } = props;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const initialState = {
     username: '',
-    password: '',
+    oldPassword: '',
+    newPassword: '',
   };
 
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(initialState);
@@ -39,16 +41,21 @@ const Login = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    postLogin('/auth/signin', loggedinUserInfo)
+    postLogin('/auth/changePassword', loggedinUserInfo)
       .then((res) => {
-        localStorage.setItem('token', res?.value);
-        localStorage.setItem('username', loggedinUserInfo.username);
-        navigate('/dashboard');
+        const obj = {
+          title: 'success',
+          message: res?.message,
+          status: true,
+          type: 'success',
+        };
+        dispatch(manageToast(obj));
+        navigate('/');
       })
       .catch((error) => {
         const obj = {
           title: 'error',
-          message: error.message,
+          message: error?.message,
           status: true,
           type: 'error',
         };
@@ -95,12 +102,12 @@ const Login = (props) => {
 
               <Grid item>
                 <TextField
+                  label='Old Password'
                   type='password'
-                  label='Password'
                   variant='standard'
                   sx={{ m: 1, width: '35ch' }}
                   required
-                  defaultValue={loggedinUserInfo?.password}
+                  defaultValue={loggedinUserInfo?.oldPassword}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>
@@ -111,23 +118,41 @@ const Login = (props) => {
                   onChange={(event) => {
                     setLoggedinUserInfo({
                       ...loggedinUserInfo,
-                      password: event.target.value,
+                      oldPassword: event.target.value,
                     });
                   }}
                 ></TextField>
               </Grid>
 
-              <Grid item justifyContent='flex-start'>
-                <Link to='/resetPassword' className={classes?.forgotPassword}>
-                  Reset password?
-                </Link>
+              <Grid item>
+                <TextField
+                  label='New Password'
+                  type='password'
+                  variant='standard'
+                  sx={{ m: 1, width: '35ch' }}
+                  required
+                  defaultValue={loggedinUserInfo?.newPassword}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position='start'>
+                        <LockIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={(event) => {
+                    setLoggedinUserInfo({
+                      ...loggedinUserInfo,
+                      newPassword: event.target.value,
+                    });
+                  }}
+                ></TextField>
               </Grid>
             </CardContent>
 
             <CardActions className={classes?.root}>
               <Grid item>
                 <Button variant='contained' size='large' type='submit'>
-                  Login
+                  Submit
                 </Button>
               </Grid>
             </CardActions>
@@ -138,4 +163,4 @@ const Login = (props) => {
   );
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(ResetPassword);

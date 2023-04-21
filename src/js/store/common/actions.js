@@ -4,8 +4,9 @@ import {
   MANAGE_DIALOG,
   MANAGE_TOAST,
   SET_COMPONENT_OVERLAY,
+  REFRESH_PAGE_DATA,
+  HEADER_ITEMS_TOGGLE
 } from '../../actions/actionTypes';
-import * as utils from '../../axiosUtils/appUtils';
 
 export const setOverlayStatus = (data) => {
   return {
@@ -38,6 +39,20 @@ export const manageToast = (data) => {
 export const manageDialog = (data) => {
   return {
     type: MANAGE_DIALOG,
+    payload: data,
+  };
+};
+
+export const refreshPageData = (data) => {
+  return {
+    type: REFRESH_PAGE_DATA,
+    payload: data,
+  };
+};
+
+export const headerItemsToggle = (data) => {
+  return {
+    type: HEADER_ITEMS_TOGGLE,
     payload: data,
   };
 };

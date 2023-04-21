@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import { withStyles } from '@mui/styles';
 import styles from './styles';
+import { footerText } from '../../data/constants';
 
 const Footer = (props) => {
   const { classes } = props;
@@ -12,7 +13,7 @@ const Footer = (props) => {
         variant='body1'
         className={classes?.footerText}
       >
-        HyP- Host your parking &copy;2023 Techprom IoT Solutions Pvt Ltd
+        {footerText}
       </Typography>
     </footer>
   );

@@ -1,16 +1,17 @@
 import React, { lazy, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Toast from './js/common/toast';
 import { connect } from 'react-redux';
 import Footer from './js/component/footer';
 import Header from './js/component/header';
 import { getToast, getOverlay } from './js/store/common/selectors';
 import LoadingOverlay from './js/common/overlay';
-import GlobalStyles from './js/hooks/globalStyles';
 import SplashScreen from './js/component/splashScreen';
 
 const Home = lazy(() => import('./js/container/home'));
 const Login = lazy(() => import('./js/container/login'));
+const ResetPassword = lazy(() => import('./js/container/resetPassword'));
+const ParkingMap = lazy(() => import('./js/component/parkingMap'));
 
 const AppRouter = (props) => {
   const { toast, overlay } = props;
@@ -21,29 +22,27 @@ const AppRouter = (props) => {
       element: (
         <>
           {toast?.status && <Toast />}
-          {<GlobalStyles />}
           {overlay && <LoadingOverlay />}
           {true && <Header />}
-          Hello.....
+          <Outlet />
           {true && <Footer />}
         </>
       ),
-    },
-
-    {
-      path: 'login',
-      element: (
-        <>
-          {toast?.status && <Toast />}
-          {<GlobalStyles />}
-          {overlay && <LoadingOverlay />}
-          <Login />
-        </>
-      ),
-    },
-    {
-      path: 'about',
-      element: <div>About</div>,
+      children: [
+        { path: '/', element: <Login /> },
+        {
+          path: 'parkingMap/:level',
+          element: <ParkingMap />,
+        },
+        {
+          path: '/dashboard',
+          element: <Home />,
+        },
+        {
+          path: '/resetPassword',
+          element: <ResetPassword />,
+        },
+      ],
     },
   ]);
 

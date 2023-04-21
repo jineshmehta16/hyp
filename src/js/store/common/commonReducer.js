@@ -4,6 +4,8 @@ import {
   MANAGE_DIALOG,
   MANAGE_TOAST,
   SET_COMPONENT_OVERLAY,
+  REFRESH_PAGE_DATA,
+  HEADER_ITEMS_TOGGLE
 } from '../../actions/actionTypes';
 
 const getInitialState = () => ({
@@ -22,6 +24,10 @@ const getInitialState = () => ({
     status: false,
     type: '',
   },
+  header:{
+    show_all:true
+  },
+  refreshPageData: true,
 });
 
 export default function CommonReducer(state = getInitialState(), action) {
@@ -46,7 +52,15 @@ export default function CommonReducer(state = getInitialState(), action) {
       return Object.assign({}, state, {
         dialog: action.payload,
       });
+    case REFRESH_PAGE_DATA:
+      return Object.assign({}, state, {
+        refreshPageData: action.payload,
+      });
+    case HEADER_ITEMS_TOGGLE:
+      return Object.assign({}, state, {
+        header: action.payload,
+      });
     default:
       return state;
   }
-}
+} 

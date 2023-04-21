@@ -1,0 +1,23 @@
+{
+    "status": "Success",
+    "data": {
+        "occupied": 65,
+        "vacant": 35,
+        "currentUtilizationInPercentage": 65,
+        "parkingLevelOccupancy": [
+            {
+                "level": "B1",
+                "occupied": 10,
+                "vacant": 15,
+                "currentUtilizationInPercentage": 40
+            },
+            {
+                "level": "B2",
+                "occupied": 15,
+                "vacant": 10,
+                "currentUtilizationInPercentage": 60
+            }
+        ]
+    },
+    "message": "Data Fetched Successfully"
+}

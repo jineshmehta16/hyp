@@ -20,7 +20,7 @@ const Toast = () => {
   return (
     <Snackbar
       open={toast.status}
-      style={{ marginBottom: '3em' }}
+      sx={{ marginBottom: '3em' }}
       autoHideDuration={8000}
       onClose={handleClose}
     >

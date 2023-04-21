@@ -23,28 +23,24 @@ let theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#15716b',
-      light: '#3baf9f',
+      main: '#000000',
+      light: '#E8E8E8',
       dark: '#00322F',
-      darker: 'rgba(0, 0, 0, 0.87)',
     },
     secondary: {
-      main: '#8A8383',
+      main: '#ffffff',
       contrastText: '#fff',
       light: '#e9e9e9',
-      lighter: '#ACACAC',
       dark: '#1a1a1a',
-      footerBgColor: '#001615',
     },
     cardBg: {
-      main: '#d9d9d9',
-    },
-    badge: {
-      warning: '#FFBF00',
+      main: '#E8E8E8',
     },
   },
   status: {
     danger: 'red',
+    occupied: '#B30000',
+    vacant: '#006600',
   },
 });
 theme = responsiveFontSizes(theme);
@@ -58,10 +54,10 @@ const store = createStore(
 
 root.render(
   <React.StrictMode>
-     <Provider store={store}>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <AppRouter />
       </ThemeProvider>
-  </Provider>
+    </Provider>
   </React.StrictMode>
 );
