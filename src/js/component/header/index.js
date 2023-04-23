@@ -26,6 +26,7 @@ import {
 import { headerTitle, buttonLabel } from '../../data/constants';
 import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
 import GuestParkingDialog from '../guestParkingDialog';
+import InviteGuestDialog from '../inviteGuestDialog';
 
 const drawerWidth = 240;
 
@@ -169,6 +170,7 @@ const Header = (props) => {
               )}
 
               {isParkingGridPage && <GuestParkingDialog />}
+              {isParkingGridPage && <InviteGuestDialog />}
             </Box>
           )}
         </Toolbar>

@@ -15,7 +15,16 @@ const InventoryCard = () => {
           <Typography>Total Inventory (4W)</Typography>
           <Grid container spacing={3} textAlign='center'>
             <Grid item>
-              <Box sx={{ height: '120px', width: '120px', background: 'red' }}>
+              <Box
+                sx={{
+                  height: '120px',
+                  width: '120px',
+                  background: 'red',
+                  padding: '46px',
+                  color: 'white',
+                  fontWeight: 'bold',
+                }}
+              >
                 {' '}
                 500{' '}
               </Box>
@@ -27,10 +36,13 @@ const InventoryCard = () => {
                   height: '120px',
                   width: '120px',
                   background: 'green',
+                  padding: '46px',
+                  color: 'white',
+                  fontWeight: 'bold',
                 }}
               >
                 {' '}
-                500{' '}
+                300{' '}
               </Box>
               <Typography>Available Slots</Typography>
             </Grid>

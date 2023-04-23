@@ -9,8 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 export default function GuestParkingDialog() {
   const [open, setOpen] = useState(false);
@@ -34,7 +33,7 @@ export default function GuestParkingDialog() {
           marginRight: '10px',
         }}
       >
-        Guest Parking
+        Guest Checkin
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Request for Guest Parking</DialogTitle>
@@ -45,9 +44,9 @@ export default function GuestParkingDialog() {
             margin='dense'
             id='name'
             label='OTP'
-            type='number'
             fullWidth
-            variant='standard'
+            variant='outlined'
+            sx={{ marginBottom: '10px', width: '100%' }}
           />
 
           <InputLabel id='demo-simple-select-label'>
