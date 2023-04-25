@@ -28,7 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function ParkingGrid(props) {
+export default function InviteGuestDataGrid(props) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label='customized table'>
@@ -40,19 +40,16 @@ export default function ParkingGrid(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props?.rows?.map((row) => (
-            <StyledTableRow key={row?.entity}>
-              <StyledTableCell component='th' scope='row'>
-                {row?.entity}
-              </StyledTableCell>
-              {row?.allocated && (
-                <StyledTableCell>{row?.allocated}</StyledTableCell>
-              )}
-              {row?.entered && (
-                <StyledTableCell>{row?.entered}</StyledTableCell>
-              )}
-              {row?.exited && <StyledTableCell>{row?.exited}</StyledTableCell>}
-              {row?.inside && <StyledTableCell>{row?.inside}</StyledTableCell>}
+          {props?.dataForGuest?.map((row) => (
+            <StyledTableRow>
+              <StyledTableCell>{row?.nameOfInviting}</StyledTableCell>
+              <StyledTableCell>{row?.date}</StyledTableCell>
+              <StyledTableCell>{row?.guestName}</StyledTableCell>
+              <StyledTableCell>{row?.companyName}</StyledTableCell>
+              <StyledTableCell>{row?.parkingZone}</StyledTableCell>{' '}
+              <StyledTableCell>{row?.guestContact}</StyledTableCell>
+              <StyledTableCell>{row?.guestCarNumber}</StyledTableCell>
+              <StyledTableCell>{row?.status}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

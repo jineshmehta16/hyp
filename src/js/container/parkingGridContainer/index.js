@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import ParkingGrid from '../../component/parkingGrid';
 import Grid from '@mui/material/Grid';
 import InventoryCard from '../../component/inventoryCard';
+import InviteGuestDataGrid from '../../component/inviteGuestDataGrid';
 
 const ParkingGridContainer = () => {
-  const columnsFourVehilers = [
-    'Entity',
-    'Allocated',
-    'Entered',
-    'exited',
-    'Inside',
-  ];
+  const dataForGuest = JSON.parse(localStorage?.getItem('guestFormData'));
 
-  const columnsTwoVehilers = ['Entity', 'Availability'];
-  function createData(entity, allocated, entered, exited, inside) {
-    return { entity, allocated, entered, exited, inside };
-  }
+  const values = useMemo(() =>
+    JSON.parse(localStorage?.getItem('guestFormData'), [dataForGuest])
+  );
 
   const intialColumnsData = [
     createData('TCS', 100, 20, 5, 8),
@@ -24,11 +18,7 @@ const ParkingGridContainer = () => {
     createData('Capita', 150, 3.7, 67, 4.3),
     createData('Persistent', 120, 16.0, 49, 3.9),
     createData('Paytm', 50, 16.0, 24, 6.0),
-    createData('JP Morgans', 250, 3.7, 67, 4.3),
-    createData('Accenture', 500, 16.0, 49, 3.9),
   ];
-
-  const [rowsFourVehilers, setRowsFourVehilers] = useState(intialColumnsData);
 
   const intialRowsData = [
     createData('TCS', Math.floor(Math.random() * 100)),
@@ -37,15 +27,37 @@ const ParkingGridContainer = () => {
     createData('Capita', Math.floor(Math.random() * 100)),
     createData('Persistent', Math.floor(Math.random() * 100)),
     createData('Paytm', Math.floor(Math.random() * 100)),
-    createData('JP Morgans', Math.floor(Math.random() * 100)),
-    createData('Accenture', Math.floor(Math.random() * 100)),
   ];
 
+  const [rowsFourVehilers, setRowsFourVehilers] = useState(intialColumnsData);
   const [rowsTwoVehilers, setRowsTwoVehilers] = useState(intialRowsData);
+
+  const columnsFourVehilers = [
+    'Entity',
+    'Allocated',
+    'Entered',
+    'exited',
+    'Inside',
+  ];
+  const columnsTwoVehilers = ['Entity', 'Availability'];
+
+  const columnsForGuestParkingData = [
+    'Who is inviting?',
+    'Date of the visit',
+    'Name of the guest',
+    'Company Name',
+    'Parking Zone name/ID',
+    'Guest Contact Number',
+    'Guest Car Number',
+    'Status',
+  ];
+
+  function createData(entity, allocated, entered, exited, inside) {
+    return { entity, allocated, entered, exited, inside };
+  }
 
   useEffect(() => {
     let interval = setInterval(() => {
-      console.log('test');
       setRowsFourVehilers([
         createData(
           'TCS',
@@ -89,20 +101,6 @@ const ParkingGridContainer = () => {
           Math.floor(Math.random() * 100),
           Math.floor(Math.random() * 10 + 1)
         ),
-        createData(
-          'JP Morgans',
-          250,
-          Math.floor(Math.random() * 10 + 1),
-          Math.floor(Math.random() * 100),
-          Math.floor(Math.random() * 10 + 1)
-        ),
-        createData(
-          'Accenture',
-          500,
-          Math.floor(Math.random() * 10 + 1),
-          Math.floor(Math.random() * 100),
-          Math.floor(Math.random() * 10 + 1)
-        ),
       ]);
 
       setRowsTwoVehilers([
@@ -112,8 +110,6 @@ const ParkingGridContainer = () => {
         createData('Capita', 305),
         createData('Persistent', 356),
         createData('Paytm', 262),
-        createData('JP Morgans', 305),
-        createData('Accenture', 356),
       ]);
     }, 6000);
 
@@ -125,10 +121,13 @@ const ParkingGridContainer = () => {
       <Grid
         container
         spacing={3}
-        sx={{ height: '300px', marginTop: '60px', padding: '20px' }}
+        sx={{
+          height: '300px',
+          marginTop: '10px',
+        }}
       >
         <Grid item xs={9}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{ mb: '10px' }}>
             <Grid item xs={7}>
               <ParkingGrid
                 columns={columnsFourVehilers}
@@ -142,6 +141,11 @@ const ParkingGridContainer = () => {
               />
             </Grid>
           </Grid>
+
+          <InviteGuestDataGrid
+            columns={columnsForGuestParkingData}
+            dataForGuest={values}
+          />
         </Grid>
         <Grid item xs={3}>
           <InventoryCard />

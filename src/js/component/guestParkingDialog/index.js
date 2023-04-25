@@ -7,12 +7,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-
 export default function GuestParkingDialog() {
   const [open, setOpen] = useState(false);
+  const [otp, setOTP] = useState('');
+  const [carNumber, setCarNumber] = useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,6 +18,19 @@ export default function GuestParkingDialog() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleSubmit = () => {
+    const dataForGuest = JSON.parse(localStorage?.getItem('guestFormData'));
+    const newObj = dataForGuest.map((obj) =>
+      obj?.guestCarNumber === carNumber
+        ? { ...obj, ...{ status: 'inside' } }
+        : obj
+    );
+    localStorage.setItem('guestFormData', JSON.stringify(newObj));
+    setOpen(false);
+    setCarNumber('');
+    setOTP('');
   };
 
   return (
@@ -47,29 +58,27 @@ export default function GuestParkingDialog() {
             fullWidth
             variant='outlined'
             sx={{ marginBottom: '10px', width: '100%' }}
+            value={otp}
+            onChange={(e) => setOTP(e.target.value)}
+            required
           />
 
-          <InputLabel id='demo-simple-select-label'>
-            Select your company name
-          </InputLabel>
-          <Select
-            labelId='demo-simple-select-label'
-            id='demo-simple-select'
-            label='Age'
-            defaultValue='TCS'
+          <TextField
+            autoFocus
+            margin='dense'
+            id='name'
+            label='Guest Car Number'
             fullWidth
-          >
-            <MenuItem value='TCS'>TCS</MenuItem>
-            <MenuItem value='Infosys'>Infosys</MenuItem>
-            <MenuItem value='Paytm'>Paytm</MenuItem>
-            <MenuItem value='Accenture'>Accenture</MenuItem>
-            <MenuItem value='GooglePay'>GooglePay</MenuItem>
-            <MenuItem value='Capita'>Capita</MenuItem>
-          </Select>
+            variant='outlined'
+            sx={{ marginBottom: '10px', width: '100%' }}
+            value={carNumber}
+            onChange={(e) => setCarNumber(e.target.value)}
+            required
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

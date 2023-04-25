@@ -10,10 +10,21 @@ import { withStyles } from '@mui/styles';
 import styles from './styles';
 import DateSelector from '../dateSelector';
 import Grid from '@mui/material/Grid';
+import dayjs from 'dayjs';
 
 const InviteGuestDialog = (props) => {
   const { classes } = props;
   const [open, setOpen] = useState(false);
+
+  const [inputs, setInputs] = useState({});
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setInputs((Values) => ({ ...Values, [name]: value }));
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,8 +34,17 @@ const InviteGuestDialog = (props) => {
     setOpen(false);
   };
 
-  const handleSubmit = () => {
-    alert('form submitted');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let data = JSON.parse(localStorage.getItem('guestFormData'));
+
+    const arr = data ? data : [];
+    const date = dayjs(selectedDate, 'YYYY-MM-DD+h:mm').format('DD-MMM-YYYY');
+    arr.push({ ...inputs, date, status: 'Not-Checked in' });
+    localStorage.setItem('guestFormData', JSON.stringify(arr));
+    handleClose();
+    setInputs({});
+    setSelectedDate(null);
   };
 
   return (
@@ -48,48 +68,85 @@ const InviteGuestDialog = (props) => {
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Who is inviting the guest:</FormLabel>
-                  <TextField variant='outlined' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    name='nameOfInviting'
+                    value={inputs.nameOfInviting || ''}
+                  />
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Date of the visit: </FormLabel>
-                  <DateSelector format='DD-MM-YYYY' variant='outlined' />
+                  <DateSelector
+                    setNewDate={setSelectedDate}
+                    updatedDate={selectedDate}
+                    views={['year', 'month', 'day']}
+                    format='DD-MM-YYYY'
+                    variant='outlined'
+                  />
                 </FormControl>
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Name of the guest:</FormLabel>
-                  <TextField variant='outlined' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    name='guestName'
+                    value={inputs.guestName || ''}
+                  />
                 </FormControl>
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Company Name:</FormLabel>
-                  <TextField variant='outlined' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    name='companyName'
+                    value={inputs.companyName || ''}
+                  />
                 </FormControl>
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Parking Zone name/ID:</FormLabel>
-                  <TextField variant='outlined' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    name='parkingZone'
+                    value={inputs.parkingZone || ''}
+                  />
                 </FormControl>
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Guest Contact Number:</FormLabel>
-                  <TextField variant='outlined' type='number' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    type='number'
+                    name='guestContact'
+                    value={inputs.guestContact || ''}
+                  />
                 </FormControl>
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl className={classes?.root}>
                   <FormLabel>Guest Car Number:</FormLabel>
-                  <TextField variant='outlined' />
+                  <TextField
+                    onChange={handleChange}
+                    variant='outlined'
+                    name='guestCarNumber'
+                    value={inputs.guestCarNumber || ''}
+                  />
                 </FormControl>
               </Grid>
             </Grid>
