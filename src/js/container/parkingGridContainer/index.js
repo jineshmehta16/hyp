@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import ParkingGrid from '../../component/parkingGrid';
 import Grid from '@mui/material/Grid';
-import InventoryCard from '../../component/inventoryCard';
 import InviteGuestDataGrid from '../../component/inviteGuestDataGrid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import PieChart from '../../component/pieChart';
 
 const ParkingGridContainer = () => {
   const dataForGuest = JSON.parse(localStorage?.getItem('guestFormData'));
@@ -148,8 +151,18 @@ const ParkingGridContainer = () => {
           />
         </Grid>
         <Grid item xs={3}>
-          <InventoryCard />
-          <InventoryCard />
+          <Card>
+            <CardContent sx={{ padding: '4px 9px' }}>
+              <Typography variant='h6' m={0} align='left'>
+                {' '}
+                Total cars
+              </Typography>
+              <PieChart occupied={200} vacant={300} height={450} />
+              <Typography variant='span'>
+                Available Parkings:<b>200</b>
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </>
