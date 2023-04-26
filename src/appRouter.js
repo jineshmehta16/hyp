@@ -7,6 +7,7 @@ import Header from './js/component/header';
 import { getToast, getOverlay } from './js/store/common/selectors';
 import LoadingOverlay from './js/common/overlay';
 import SplashScreen from './js/component/splashScreen';
+import ParkingGridContainer from './js/container/parkingGridContainer';
 
 const Home = lazy(() => import('./js/container/home'));
 const Login = lazy(() => import('./js/container/login'));
@@ -41,6 +42,10 @@ const AppRouter = (props) => {
         {
           path: '/resetPassword',
           element: <ResetPassword />,
+        },
+        {
+          path: 'parkingGrid',
+          element: <ParkingGridContainer />,
         },
       ],
     },
