@@ -18,15 +18,15 @@ import {
 } from '../../data/constants';
 
 const floorImagePath = {
-  LB1: b1Map,
-  UB1: b2Map,
+  B1: b1Map,
+  B2: b2Map,
 };
 
 const OccupancyLayout = (props) => {
   const emptyParkingData = {
     level: 'B2',
-    occupied: 0,
-    vacant: 100,
+    occupied: 100,
+    vacant: 0,
     currentUtilizationInPercentage: 0,
   };
   return (

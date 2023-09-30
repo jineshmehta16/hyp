@@ -20,6 +20,9 @@ import {
   pickDateYearLabel,
 } from '../../data/constants';
 import dayjs from 'dayjs';
+import { APP_CONFIG } from '../../../appConfig';
+
+const REPORTS_URL = `${APP_CONFIG.REPORTS_URL}`;
 
 const ReportForm = (props) => {
   const { classes } = props;
@@ -64,7 +67,7 @@ const ReportForm = (props) => {
 
     post(reportUrl, formData)
       .then(function (response) {
-        const href = `http://sanralpharma.com/${response}`;
+        const href = `${REPORTS_URL}/${response}`;
         const link = document.createElement('a');
         link.href = href;
         link.setAttribute('target', '_blank');
