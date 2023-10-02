@@ -1,11 +1,16 @@
-<IfModule mod_rewrite.c>
+RewriteOptions inherit
+RewriteEngine On
 
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.hyp.techpromiot.com/$1 [R,L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php70” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddType application/x-httpd-ea-php70 .php .php7 .phtml
 </IfModule>
+# php -- END cPanel-generated handler, do not edit
