@@ -25,6 +25,7 @@ import {
 } from '../../store/common/selectors';
 import { headerTitle, buttonLabel } from '../../data/constants';
 import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
+import logo from "../../../assets/images/chb-logo.png";
 
 const drawerWidth = 240;
 
@@ -52,9 +53,15 @@ const Header = (props) => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const externalThemeLogo = () =>{
+    return(<Toolbar style={{backgroundColor: 'white'}}>
+    <img src={logo} style={{padding: '0.8em'}} width={150} alt="HYP Logo" />
+  </Toolbar>)
+  }
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant='h6' sx={{ my: 2 }}>
+      {externalThemeLogo()}
+       <Typography variant='h6' sx={{ my: 2 }}>
         {headerTitle}
       </Typography>
       <Divider />
@@ -103,6 +110,7 @@ const Header = (props) => {
     <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem', mb: '0.5rem' }}>
       <CssBaseline />
       <AppBar component='nav'>
+        {externalThemeLogo()}
         <Toolbar>
           {headeritemToggle?.show_all && (
             <IconButton
@@ -115,7 +123,7 @@ const Header = (props) => {
               <MenuIcon />
             </IconButton>
           )}
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography variant='h6'   component='div' sx={{ flexGrow: 1 }}>
             {headerTitle}
           </Typography>
           {headeritemToggle?.show_all && (

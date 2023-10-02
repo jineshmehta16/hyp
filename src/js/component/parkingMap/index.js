@@ -60,31 +60,39 @@ const ParkingMap = (props) => {
   return (
     <>
       <div id='map' className={classes.wrapper}>
-        <img src={state?.imagePath} alt='test' className={classes.image} />
-        {dataSet.map((each) => (
-          <div
-            key={each?.parkingNumber}
-            style={{
-              width: each?.position === 'H' ? '2%' : '1.3%',
-              height: each?.position === 'H' ? '11px' : '33px',
-              background: +parkingStatus?.[each?.parkingNumber]
-                ? 'red'
-                : 'green',
-              position: 'absolute',
-              top: `${each?.yCord}%`,
-              left: `${each?.xCord}%`,
-              color: 'yellow',
-              fontSize: '9px',
-              fontWeight: 'bold',
-              zIndex: 4,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            {each?.parkingNumber}
-          </div>
-        ))}
+        <img src={state?.imagePath} alt='Flow Design and Layout' className={classes.image} />
+        {dataSet.map((each) => {
+          let bgColor = +parkingStatus?.[each?.parkingNumber]
+          ? 'red'
+          : 'green';
+
+          if(each?.inactive){
+            bgColor = 'black';
+          }
+
+          return(
+            <div
+              key={each?.parkingNumber}
+              style={{
+                width: each?.position === 'H' ? '2%' : '1.3%',
+                height: each?.position === 'H' ? '11px' : '33px',
+                background: bgColor,
+                position: 'absolute',
+                top: `${each?.yCord}%`,
+                left: `${each?.xCord}%`,
+                color: 'yellow',
+                fontSize: '9px',
+                fontWeight: 'bold',
+                zIndex: 4,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              {each?.parkingNumber}
+            </div>
+          )
+        })}
       </div>
     </>
   );

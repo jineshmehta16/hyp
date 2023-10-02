@@ -423,6 +423,14 @@
     ],
     "B2": [
         {
+            "parkingNumber": "NA",
+            "xCord": 15.140478668054111,
+            "yCord": 19.11079958463136,
+            "occupied": true,
+            "inactive": true,
+            "position": "H"
+        },
+        {
             "parkingNumber": "BA_1",
             "xCord": 15.244536940686784,
             "yCord": 22.8,
@@ -778,62 +786,6 @@
             "yCord": 70.92419522326064,
             "occupied": true,
             "position": "V"
-        },
-        {
-            "parkingNumber": "CA_1",
-            "xCord": 93.59375,
-            "yCord": 22.684703433922998,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_2",
-            "xCord": 93.59375,
-            "yCord": 25.59833506763788,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_3",
-            "xCord": 93.64583333333333,
-            "yCord": 28.51196670135276,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_4",
-            "xCord": 93.54166666666667,
-            "yCord": 31.21748178980229,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_5",
-            "xCord": 93.54166666666667,
-            "yCord": 36.00416233090531,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_6",
-            "xCord": 93.59375,
-            "yCord": 38.70967741935484,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_7",
-            "xCord": 93.64583333333333,
-            "yCord": 41.72736732570239,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "CA_8",
-            "xCord": 93.54166666666667,
-            "yCord": 44.432882414151926,
-            "occupied": true,
-            "position": "H"
         }
     ]
 }
