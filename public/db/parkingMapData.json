@@ -1159,5 +1159,322 @@
             "occupied": true,
             "position": "V"
         }
+    ],
+    "B4": [
+        {
+            "parkingNumber": "DA_1",
+            "xCord": 13.50047866805411,
+            "yCord": 8.40079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_2",
+            "xCord": 13.50047866805411,
+            "yCord": 12.90079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_3",
+            "xCord": 13.50047866805411,
+            "yCord": 17.00079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_4",
+            "xCord": 13.50047866805411,
+            "yCord": 22.20079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_5",
+            "xCord": 13.50047866805411,
+            "yCord": 26.70079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_6",
+            "xCord": 13.50047866805411,
+            "yCord": 31.30079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_7",
+            "xCord": 13.50047866805411,
+            "yCord": 36.30079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_8",
+            "xCord": 13.50047866805411,
+            "yCord": 40.30079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_9",
+            "xCord": 13.50047866805411,
+            "yCord": 44.30079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_10",
+            "xCord": 13.50047866805411,
+            "yCord": 49.20079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_11",
+            "xCord": 13.50047866805411,
+            "yCord": 53.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_12",
+            "xCord": 13.50047866805411,
+            "yCord": 57.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_13",
+            "xCord": 13.50047866805411,
+            "yCord": 64.20079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DA_14",
+            "xCord": 13.50047866805411,
+            "yCord": 68.50079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_1",
+            "xCord": 24.50047866805411,
+            "yCord": 8.40079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_2",
+            "xCord": 24.50047866805411,
+            "yCord": 12.40079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_3",
+            "xCord": 24.50047866805411,
+            "yCord": 16.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_4",
+            "xCord": 24.50047866805411,
+            "yCord": 22.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_5",
+            "xCord": 24.50047866805411,
+            "yCord": 26.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_6",
+            "xCord": 24.50047866805411,
+            "yCord": 30.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_7",
+            "xCord": 24.50047866805411,
+            "yCord": 35.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_8",
+            "xCord": 24.50047866805411,
+            "yCord": 39.80079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_9",
+            "xCord": 24.50047866805411,
+            "yCord": 44.20079958463136,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DB_10",
+            "xCord": 24.50047866805411,
+            "yCord": 49.6,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "DD_1",
+            "xCord": 46.50039636127355,
+            "yCord": 50.99792315680166,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_2",
+            "xCord": 50.00039636127355,
+            "yCord": 50.99792315680166,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_3",
+            "xCord": 69.200,
+            "yCord": 54.932502596054,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_4",
+            "xCord": 72.500,
+            "yCord": 54.932502596054,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_5",
+            "xCord": 76.500,
+            "yCord": 54.932502596054,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_6",
+            "xCord": 79.500,
+            "yCord": 54.932502596054,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DD_7",
+            "xCord": 82.00,
+            "yCord": 54.932502596054,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_1",
+            "xCord": 34.537556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_2",
+            "xCord": 38.537556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_3",
+            "xCord": 41.937556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_4",
+            "xCord": 45.937556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_5",
+            "xCord": 49.937556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_6",
+            "xCord": 53.637556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_7",
+            "xCord": 57.037556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_8",
+            "xCord": 61.037556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_9",
+            "xCord": 65.037556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_10",
+            "xCord": 69.037556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_11",
+            "xCord": 72.937556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_12",
+            "xCord": 77.037556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_13",
+            "xCord": 80.537556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "DE_14",
+            "xCord": 83.837556855100715,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "position": "V"
+        }
     ]
 }
