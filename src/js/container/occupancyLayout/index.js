@@ -9,6 +9,8 @@ import ReportForm from '../../component/reportForm';
 import ParkingDataCard from '../../component/parkingDataCard';
 import b1Map from '../../../assets/images/lowerbasement.jpeg';
 import b2Map from '../../../assets/images/upperbasement.jpeg';
+import f3Map from '../../../assets/images/thirdfloor.jpg';
+import f4Map from '../../../assets/images/fourthfloor.jpg';
 import {
   totalParkingCardTitle,
   levelwiseParkingCardTitle,
@@ -20,6 +22,8 @@ import {
 const floorImagePath = {
   B1: b1Map,
   B2: b2Map,
+  F3: f3Map,
+  F4: f4Map,
 };
 
 const OccupancyLayout = (props) => {
