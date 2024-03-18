@@ -37,31 +37,39 @@ const OccupancyLayout = (props) => {
     <Box sx={{ flexGrow: 1 }} m={0}>
       <Grid container spacing={3} p={4}>
         <Grid item lg={4} md={12} xs={12}>
-          <Card
-            sx={{
-              height: '100%',
-            }}
-          >
-            <CardContent sx={{ padding: '4px 9px' }}>
-              <Typography variant='h6' m={0} align='left'>
-                {' '}
-                {totalParkingCardTitle}
-              </Typography>
-              <PieChart
-                occupied={props?.occupied || 0}
-                vacant={props?.vacant || 0}
-                height={250}
-              />
-              <Typography variant='span'>
-                {availableParkingsLabel}:<b>{props?.vacant || 0}</b>
-              </Typography>
+          <Grid item xs={12}>
+            <Card>
+              <CardContent sx={{ padding: '4px 9px' }}>
+                <Typography variant='h6' m={0} align='left'>
+                  {' '}
+                  {totalParkingCardTitle}
+                </Typography>
+                <PieChart
+                  occupied={props?.occupied || 0}
+                  vacant={props?.vacant || 0}
+                  height={250}
+                />
+                <Typography variant='span'>
+                  {availableParkingsLabel}:<b>{props?.vacant || 0}</b>
+                </Typography>
 
-              <Typography variant='body1'>
-                {currentUtilization} :
-                <b>{props?.currentUtilizationInPercentage}%</b>
-              </Typography>
-            </CardContent>
-          </Card>
+                <Typography variant='body1'>
+                  {currentUtilization} :
+                  <b>{props?.currentUtilizationInPercentage}%</b>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sx={{ marginTop: '10px' }}>
+            <Card sx={{ paddingBottom: '4rem' }}>
+              <CardContent sx={{ padding: '4px 9px' }}>
+                <Typography variant='h6' m={0} align='left'>
+                  {downloadReportTitle}
+                </Typography>
+                <ReportForm />
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
         <Grid item lg={8} md={12} xs={12}>
           <Card
@@ -84,55 +92,6 @@ const OccupancyLayout = (props) => {
                     levelParkingData={levelParkingData}
                     imagepath={floorImagePath?.[levelParkingData?.level]}
                   />
-                </Grid>
-              ))}
-
-              {props?.parkingLevelOccupancy?.length === 1 && (
-                <Grid item md={6} xs={12}>
-                  <ParkingDataCard
-                    levelParkingData={emptyParkingData}
-                    imagepath={floorImagePath?.['B2']}
-                  />
-                </Grid>
-              )}
-            </Grid>
-          </Card>
-        </Grid>
-
-        <Grid item lg={4} md={12} xs={12}>
-          <Card
-            sx={{
-              height: '100%',
-            }}
-          >
-            <CardContent sx={{ padding: '4px 9px' }}>
-              <Typography variant='h6' m={0} align='left'>
-                {downloadReportTitle}
-              </Typography>
-              <ReportForm />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item lg={8} md={12} xs={12}>
-          <Card
-            sx={{
-              height: '100%',
-              paddingBottom: '18px',
-              marginBottom: '2rem',
-              textAlign: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Typography variant='h6' align='left' ml={2} mt={1}>
-              {' '}
-              {levelwiseParkingCardTitle}
-            </Typography>
-
-            <Grid container m={0.2} spacing={3} pt={2} align='left'>
-              {props?.parkingLevelOccupancy?.map((levelParkingData, ind) => (
-                <Grid item md={6} xs={12} key={levelParkingData?.level + ind}>
-                  <ParkingDataCard />
                 </Grid>
               ))}
 
