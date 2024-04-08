@@ -27,7 +27,8 @@ const ParkingMap = (props) => {
     return get('/parking/map')
       .then((response) => {
         if (response?.data?.status?.toUpperCase() === 'SUCCESS') {
-          response?.data?.data?.sensors && setParkingStatus(response?.data?.data?.sensors);
+          response?.data?.data?.sensors &&
+            setParkingStatus(response?.data?.data?.sensors);
         } else {
           const obj = {
             title: 'error',
@@ -49,13 +50,11 @@ const ParkingMap = (props) => {
         dispatch(manageToast(obj));
         dispatch(setOverlayStatus(false));
       });
-  
-  }
+  };
 
   useEffect(() => {
-     getMapData();
+    getMapData();
   }, [refreshFlag]);
-
 
   return (
     <>
@@ -67,9 +66,12 @@ const ParkingMap = (props) => {
             style={{
               width: each?.position === 'H' ? '2%' : '1.3%',
               height: each?.position === 'H' ? '11px' : '33px',
-              background: +parkingStatus?.[each?.parkingNumber]
-                ? 'red'
-                : 'green',
+              background:
+                +parkingStatus?.[each?.parkingNumber] == 1
+                  ? 'red'
+                  : +parkingStatus?.[each?.parkingNumber] == 0
+                  ? 'green'
+                  : 'orange',
               position: 'absolute',
               top: `${each?.yCord}%`,
               left: `${each?.xCord}%`,
