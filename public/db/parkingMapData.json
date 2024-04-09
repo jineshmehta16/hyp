@@ -239,34 +239,6 @@
             "position": "H"
         },
         {
-            "parkingNumber": "AD_9",
-            "xCord": 93.30734243014945,
-            "yCord": 36.7601246105919,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "AD_10",
-            "xCord": 93.30734243014945,
-            "yCord": 39.35617860851506,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "AD_11",
-            "xCord": 93.30734243014945,
-            "yCord": 42.15991692627207,
-            "occupied": true,
-            "position": "H"
-        },
-        {
-            "parkingNumber": "AD_12",
-            "xCord": 93.30734243014945,
-            "yCord": 45.17133956386293,
-            "occupied": true,
-            "position": "H"
-        },
-        {
             "parkingNumber": "AD_1",
             "xCord": 56.01039636127355,
             "yCord": 53.99792315680166,
