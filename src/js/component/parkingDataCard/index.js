@@ -27,9 +27,10 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
       sx={{
         backgroundColor: (theme) => theme?.palette?.cardBg?.main,
         marginRight: '2rem',
+        margin: '1rem',
       }}
     >
-      {levelParkingData ? (
+      {levelParkingData && (
         <>
           <CardContent>
             <Typography gutterBottom variant='subtitle1' component='div'>
@@ -61,21 +62,6 @@ const ParkingDataCard = ({ levelParkingData, imagepath }) => {
             </Button>
           </CardActions>
         </>
-      ) : (
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant='h5'
-            component='div'
-            sx={{
-              height: '15rem',
-              textAlign: 'center',
-              paddingTop: '7.5rem',
-            }}
-          >
-            {comingSoonCardTitle}
-          </Typography>
-        </CardContent>
       )}
     </Card>
   );

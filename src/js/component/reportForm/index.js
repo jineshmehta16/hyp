@@ -115,7 +115,9 @@ const ReportForm = (props) => {
           />
         </RadioGroup>
       </FormControl>
-      <FormControl sx={{ marginBottom: '10px', width: '100%' }}>
+      <FormControl
+        sx={{ marginBottom: '10px', marginTop: '2rem', width: '100%' }}
+      >
         {reportFormat === reportFormatType.DAILY && (
           <>
             <DateSelector
