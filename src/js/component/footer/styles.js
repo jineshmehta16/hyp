@@ -5,7 +5,7 @@ const styles = (theme) => {
       color: theme?.palette?.secondary?.main,
       padding: '16px',
       textAlign: 'center',
-      position: 'absolute',
+      position: 'fixed',
       bottom: '0',
       left: '0',
       right: '0',

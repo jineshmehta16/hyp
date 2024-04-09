@@ -27,7 +27,8 @@ const ParkingMap = (props) => {
     return get('/parking/map')
       .then((response) => {
         if (response?.data?.status?.toUpperCase() === 'SUCCESS') {
-          response?.data?.data?.sensors && setParkingStatus(response?.data?.data?.sensors);
+          response?.data?.data?.sensors &&
+            setParkingStatus(response?.data?.data?.sensors);
         } else {
           const obj = {
             title: 'error',
@@ -49,28 +50,33 @@ const ParkingMap = (props) => {
         dispatch(manageToast(obj));
         dispatch(setOverlayStatus(false));
       });
-  
-  }
+  };
 
   useEffect(() => {
-     getMapData();
+    getMapData();
   }, [refreshFlag]);
-
 
   return (
     <>
       <div id='map' className={classes.wrapper}>
-        <img src={state?.imagePath} alt='Flow Design and Layout' className={classes.image} />
+        <img
+          src={state?.imagePath}
+          alt='Flow Design and Layout'
+          className={classes.image}
+        />
         {dataSet.map((each) => {
-          let bgColor = +parkingStatus?.[each?.parkingNumber]
-          ? 'red'
-          : 'green';
+          let bgColor =
+            +parkingStatus?.[each?.parkingNumber] == 1
+              ? 'red'
+              : +parkingStatus?.[each?.parkingNumber] == 0
+              ? 'green'
+              : 'orange';
 
-          if(each?.inactive){
+          if (each?.inactive) {
             bgColor = 'black';
           }
 
-          return(
+          return (
             <div
               key={each?.parkingNumber}
               style={{
@@ -91,7 +97,7 @@ const ParkingMap = (props) => {
             >
               {each?.parkingNumber}
             </div>
-          )
+          );
         })}
       </div>
     </>
