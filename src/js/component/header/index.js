@@ -116,7 +116,7 @@ const Header = (props) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem', mb: '0.5rem' }}>
+    <Box sx={{ display: 'flex', bgcolor: 'primary', m: '3rem', mb: '4rem' }}>
       <CssBaseline />
       <AppBar component='nav'>
         {externalThemeLogo()}

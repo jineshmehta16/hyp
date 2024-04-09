@@ -1107,6 +1107,14 @@
     ],
     "F4": [
         {
+            "parkingNumber": "NA",
+            "xCord": 13.50047866805411,
+            "yCord": 8.7,
+            "occupied": true,
+            "inactive": true,
+            "position": "H"
+        },
+        {
             "parkingNumber": "CD_13",
             "xCord": 13.50047866805411,
             "yCord": 12.90079958463136,
@@ -1198,6 +1206,14 @@
             "position": "H"
         },
         {
+            "parkingNumber": "NA",
+            "xCord": 24.50047866805411,
+            "yCord": 8.7,
+            "occupied": true,
+            "inactive": true,
+            "position": "H"
+        },
+        {
             "parkingNumber": "CC_9",
             "xCord": 24.50047866805411,
             "yCord": 12.40079958463136,
@@ -1272,6 +1288,14 @@
             "xCord": 50.00039636127355,
             "yCord": 50.99792315680166,
             "occupied": true,
+            "position": "V"
+        },
+        {
+            "parkingNumber": "NA",
+            "xCord": 34.7,
+            "yCord": 70.8814122533749,
+            "occupied": true,
+            "inactive": true,
             "position": "V"
         },
         {
