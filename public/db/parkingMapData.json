@@ -295,6 +295,34 @@
             "position": "V"
         },
         {
+            "parkingNumber": "AD_9",
+            "xCord": 93.30734243014945,
+            "yCord": 36.7601246105919,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "AD_10",
+            "xCord": 93.30734243014945,
+            "yCord": 39.35617860851506,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "AD_11",
+            "xCord": 93.30734243014945,
+            "yCord": 42.15991692627207,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "AD_12",
+            "xCord": 93.30734243014945,
+            "yCord": 45.17133956386293,
+            "occupied": true,
+            "position": "H"
+        },
+        {
             "parkingNumber": "AE_1",
             "xCord": 49.837556855100715,
             "yCord": 68.32814122533749,
@@ -758,6 +786,62 @@
             "yCord": 70.92419522326064,
             "occupied": true,
             "position": "V"
+        },
+        {
+            "parkingNumber": "EA_1",
+            "xCord": 93,
+            "yCord": 22.9,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_2",
+            "xCord": 93,
+            "yCord": 25.9,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_3",
+            "xCord": 93,
+            "yCord": 28.5,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_4",
+            "xCord": 93,
+            "yCord": 31.5,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_5",
+            "xCord": 93,
+            "yCord": 35.9,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_6",
+            "xCord": 93,
+            "yCord": 38.9,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_7",
+            "xCord": 93,
+            "yCord": 41.9,
+            "occupied": true,
+            "position": "H"
+        },
+        {
+            "parkingNumber": "EA_8",
+            "xCord": 93,
+            "yCord": 44.9,
+            "occupied": true,
+            "position": "H"
         }
     ],
     "F3": [
